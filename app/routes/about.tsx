@@ -2,11 +2,11 @@ import type { Route } from "./+types/about";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "About — Modus Tel Labs" },
+    { title: "About — ModusTel" },
     {
       name: "description",
       content:
-        "We build AI-first internal tools that remove operational friction with durable automations and M365-native apps.",
+        "ModusTel builds outcomes-first systems that move from prototype to production with durable automation and M365-native apps.",
     },
   ];
 }
@@ -16,49 +16,52 @@ export default function About() {
     <div className="prose">
       <h1>About</h1>
       <p>
-        Modus Tel Labs builds AI-first internal tools that quietly eliminate
-        operational friction — automation, integrations, and M365-native apps.
+        ModusTel exists to turn operational friction into dependable systems.
+        We’re engineers who care about outcomes, long-lived codebases, and
+        thoughtful handoff to internal teams.
       </p>
 
       <div className="grid">
         <section className="card">
-          <h2>Mission</h2>
+          <h2>Why ModusTel</h2>
           <p>
-            Deliver practical AI-powered tooling that reduces toil, increases
-            observability, and improves outcomes for teams.
+            We saw too many prototypes stall before production. ModusTel bridges
+            that gap with clear sprints, hardening, and delivery artifacts that
+            teams can own.
           </p>
         </section>
 
         <section className="card">
-          <h2>Approach</h2>
-          <ol>
-            <li>Discover constraints and success metrics</li>
-            <li>Ship a focused sprint with working demos</li>
-            <li>Harden with tests, monitoring, and runbooks</li>
-          </ol>
-        </section>
-
-        <section className="card">
-          <h2>Team</h2>
+          <h2>Background</h2>
           <p>
-            A small cross-functional team of engineers and operators who care
-            about long-lived systems and smooth handoff to product teams.
+            Experience across enterprise operations, Microsoft 365 ecosystems,
+            and applied AI means we build tools that are fast to adopt and safe
+            to scale.
           </p>
         </section>
 
         <section className="card">
           <h2>Values</h2>
           <ul>
-            <li>Reliability over novelty</li>
-            <li>Observability by default</li>
-            <li>Design for real-world edge cases</li>
+            <li>Outcomes over novelty</li>
+            <li>Security and observability by default</li>
+            <li>Documentation that enables handoff</li>
           </ul>
+        </section>
+
+        <section className="card">
+          <h2>How we work</h2>
+          <ol>
+            <li>Discover constraints, workflows, and success metrics</li>
+            <li>Ship a focused prototype with weekly demos</li>
+            <li>Harden with tests, logging, and runbooks</li>
+          </ol>
         </section>
       </div>
 
       <p>
-        Ready to talk? <a href="/contact">Contact us</a> and we’ll schedule a
-        discovery conversation.
+        Let’s build something durable. <a href="/contact">Send a brief</a> and
+        we’ll follow up quickly.
       </p>
     </div>
   );
