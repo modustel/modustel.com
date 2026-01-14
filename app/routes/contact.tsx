@@ -1,12 +1,33 @@
 import type { Route } from "./+types/contact";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "Contact — ModusTel";
+  const description =
+    "Send a brief or book a discovery call to discuss automation, integrations, and M365-native apps.";
+  const ogImage = "https://modustel.com/assets/og-modustel.svg";
   return [
-    { title: "Contact — ModusTel" },
+    { title },
     {
       name: "description",
-      content:
-        "Send a brief or book a discovery call to discuss automation, integrations, and M365-native apps.",
+      content: description,
+    },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: ogImage },
+    {
+      property: "og:image:alt",
+      content: "ModusTel logo with Prototype-to-Production Systems",
+    },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImage },
+    {
+      name: "twitter:image:alt",
+      content: "ModusTel logo with Prototype-to-Production Systems",
     },
   ];
 }
