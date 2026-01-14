@@ -5,11 +5,195 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100%;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(59, 130, 246, 0.35), transparent 60%),
+      radial-gradient(900px 500px at 90% 10%, rgba(168, 85, 247, 0.28), transparent 55%),
+      #0b1020;
+    color: #e2e8f0;
+  }
+
+  ::selection {
+    background: rgba(56, 189, 248, 0.35);
+  }
+}
+
+@layer components {
+  .container {
+    width: min(1100px, calc(100% - 48px));
+    margin: 0 auto;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(14px);
+    background: rgba(10, 16, 32, 0.78);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  }
+
+  .headerInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 18px 0;
+  }
+
+  .brand {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f8fafc;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.95rem;
+  }
+
+  .navLink {
+    color: rgba(226, 232, 240, 0.8);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+
+  .navLink:hover {
+    color: #f8fafc;
+    background: rgba(148, 163, 184, 0.15);
+  }
+
+  .navLinkActive {
+    color: #0b1020;
+    background: linear-gradient(135deg, #7dd3fc, #a78bfa);
+    box-shadow: 0 8px 18px rgba(14, 165, 233, 0.3);
+  }
+
+  .main {
+    padding: 56px 0 96px;
+  }
+
+  .prose {
+    display: grid;
+    gap: 28px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .prose h1 {
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    line-height: 1.1;
+    color: #f8fafc;
+    margin-bottom: 8px;
+  }
+
+  .prose h2 {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: #e2e8f0;
+    margin-bottom: 8px;
+  }
+
+  .prose h3 {
+    font-size: 1.25rem;
+    color: #e2e8f0;
+    margin-bottom: 6px;
+  }
+
+  .prose p,
+  .prose li {
+    color: rgba(226, 232, 240, 0.85);
+  }
+
+  .prose a {
+    color: #7dd3fc;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .prose a:hover {
+    color: #bae6fd;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 22px;
+    display: grid;
+    gap: 10px;
+  }
+
+  .grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.45);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    color: #0b1020;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 16px 30px rgba(56, 189, 248, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 38px rgba(56, 189, 248, 0.45);
+  }
+
+  .footer {
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 28px 0 40px;
+    color: rgba(226, 232, 240, 0.6);
+  }
+
+  @media (max-width: 768px) {
+    .headerInner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .nav {
+      width: 100%;
+      justify-content: flex-start;
+    }
   }
 }
