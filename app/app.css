@@ -68,6 +68,32 @@
     font-size: 0.95rem;
   }
 
+  .menuToggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(15, 23, 42, 0.6);
+    color: #f8fafc;
+    cursor: pointer;
+  }
+
+  .menuToggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: #f8fafc;
+    border-radius: 999px;
+  }
+
+  .menuToggle:hover {
+    border-color: rgba(125, 211, 252, 0.6);
+  }
+
   .navLink {
     color: rgba(226, 232, 240, 0.8);
     text-decoration: none;
@@ -187,13 +213,30 @@
 
   @media (max-width: 768px) {
     .headerInner {
-      align-items: flex-start;
-      flex-direction: column;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
 
     .nav {
+      display: none;
       width: 100%;
       justify-content: flex-start;
+      flex-direction: column;
+      padding: 12px;
+      margin-top: 8px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 16px;
+    }
+
+    .navOpen {
+      display: flex;
+    }
+
+    .menuToggle {
+      display: inline-flex;
+      margin-left: auto;
     }
   }
 }
