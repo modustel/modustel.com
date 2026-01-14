@@ -2,11 +2,11 @@ import type { Route } from "./+types/insights";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Insights — Modus Tel Labs" },
+    { title: "Insights — ModusTel" },
     {
       name: "description",
       content:
-        "Thoughtful writing on building resilient automation, integrations, and M365-native apps.",
+        "Notes on building prototype-to-production systems: automation, integrations, and M365-native apps.",
     },
   ];
 }
@@ -16,8 +16,8 @@ export default function InsightsIndex() {
     <div className="prose">
       <h1>Insights</h1>
       <p>
-        Short essays and case notes about building internal tooling, durable
-        integrations, and operational observability.
+        Short essays on patterns, lessons learned, and practical approaches to
+        operational automation.
       </p>
 
       <ul>
@@ -30,7 +30,8 @@ export default function InsightsIndex() {
       </ul>
 
       <p>
-        Want to talk about a post or a project? <a href="/contact">Contact us</a>.
+        Want more detail on a topic? <a href="/contact">Send a brief</a> and we’ll
+        share relevant notes.
       </p>
     </div>
   );

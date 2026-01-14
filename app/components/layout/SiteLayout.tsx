@@ -20,7 +20,7 @@ export function SiteLayout() {
     <MDXProvider components={mdxComponents}>
       <header className="header">
         <div className="container headerInner">
-          <div className="brand">ModusTel Labs</div>
+          <div className="brand">ModusTel</div>
           <nav className="nav">
             <NavItem to="/" label="Home" />
             <NavItem to="/services" label="Services" />
@@ -37,7 +37,9 @@ export function SiteLayout() {
       </main>
 
       <footer className="footer">
-        <div className="container">© {new Date().getFullYear()} Modus Tel Labs LLC</div>
+        <div className="container">
+          © {new Date().getFullYear()} ModusTel LLC
+        </div>
       </footer>
     </MDXProvider>
   );

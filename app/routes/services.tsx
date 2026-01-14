@@ -2,11 +2,11 @@ import type { Route } from "./+types/services";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Services — Modus Tel Labs" },
+    { title: "Services — ModusTel" },
     {
       name: "description",
       content:
-        "AI-first internal tooling: workflow automation, integrations, and M365-native apps that remove operational friction.",
+        "Outcome-driven service packages for automation, integrations, and M365-native apps that graduate from prototype to production.",
     },
   ];
 }
@@ -16,55 +16,103 @@ export default function Services() {
     <div className="prose">
       <h1>Services</h1>
       <p>
-        We build AI-first internal tools that remove friction from operations —
-        automation, integrations, and M365-native apps designed to scale.
+        We package outcomes, not hours. Each engagement is designed to ship a
+        usable system quickly and then harden it for long-term use.
       </p>
 
-      <div className="grid">
-        <section className="card">
-          <h2>Discovery & Strategy</h2>
-          <p>
-            We learn your workflows and constraints so automation is reliable and
-            aligned with how your teams work.
-          </p>
-        </section>
+      <section>
+        <h2>Service packages</h2>
+        <div className="grid">
+          <section className="card">
+            <h3>Proposal Automation System</h3>
+            <p>
+              A full pipeline from intake to pricing to PDF delivery with CRM
+              sync.
+            </p>
+            <ul>
+              <li>Typical timeline: 4–6 weeks</li>
+              <li>Deliverables: workflow map, automation, PDF templates</li>
+            </ul>
+          </section>
 
-        <section className="card">
-          <h2>Workflow Automation</h2>
-          <p>
-            Ship resilient automations that handle real-world edge cases and
-            reduce manual toil.
-          </p>
-        </section>
+          <section className="card">
+            <h3>Operations Command Center</h3>
+            <p>
+              A single pane of glass for dashboards, alerts, and escalation
+              workflows.
+            </p>
+            <ul>
+              <li>Typical timeline: 6–8 weeks</li>
+              <li>Deliverables: dashboards, alerts, SOP playbooks</li>
+            </ul>
+          </section>
 
-        <section className="card">
-          <h2>Integrations & APIs</h2>
-          <p>
-            Connect systems cleanly with durable integrations and robust
-            observability.
-          </p>
-        </section>
+          <section className="card">
+            <h3>M365-native Internal Apps</h3>
+            <p>
+              Teams, SharePoint, and Outlook extensions that fit existing
+              security and identity models.
+            </p>
+            <ul>
+              <li>Typical timeline: 3–6 weeks</li>
+              <li>Deliverables: app build, deployment plan, adoption guide</li>
+            </ul>
+          </section>
 
-        <section className="card">
-          <h2>M365-native Apps</h2>
-          <p>
-            Build apps that fit directly into your Microsoft 365 environment for
-            seamless adoption.
-          </p>
-        </section>
+          <section className="card">
+            <h3>Integration Layer</h3>
+            <p>
+              Microsoft Graph, CRMs, accounting, and custom data sources aligned
+              with your architecture.
+            </p>
+            <ul>
+              <li>Typical timeline: 4–8 weeks</li>
+              <li>Deliverables: APIs, data contracts, observability</li>
+            </ul>
+          </section>
+        </div>
+      </section>
 
-        <section className="card">
-          <h2>Delivery & Support</h2>
-          <p>
-            We ship iteratively, add tests and logging, and hand over runbooks
-            so systems operate reliably in production.
-          </p>
-        </section>
-      </div>
+      <section>
+        <h2>Engagement models</h2>
+        <div className="grid">
+          <section className="card">
+            <h3>Fixed-scope sprint</h3>
+            <p>
+              Best for a defined prototype or workflow. We scope tightly, ship
+              fast, and deliver a handoff-ready codebase.
+            </p>
+          </section>
+          <section className="card">
+            <h3>Retainer partnership</h3>
+            <p>
+              Ongoing support for incremental automation, maintenance, and
+              continuous improvements.
+            </p>
+          </section>
+          <section className="card">
+            <h3>Prototype to production track</h3>
+            <p>
+              A phased engagement that starts with a POC and graduates into
+              enterprise-grade delivery.
+            </p>
+          </section>
+        </div>
+      </section>
+
+      <section>
+        <h2>How we deliver</h2>
+        <ol>
+          <li>Discover workflows, constraints, and success metrics.</li>
+          <li>Sprint build with weekly demos and feedback loops.</li>
+          <li>Harden with security reviews, tests, and logging.</li>
+          <li>Handoff or operate with training and runbooks.</li>
+        </ol>
+      </section>
 
       <p>
-        Ready to talk? <a href="/contact">Contact us</a> and we’ll schedule a
-        quick discovery conversation.
+        Ready to start? <a href="/contact">Send a brief</a> and we’ll respond
+        with a proposed plan.
       </p>
     </div>
   );
