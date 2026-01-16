@@ -1,12 +1,33 @@
 import type { Route } from "./+types/work";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "Work — ModusTel";
+  const description =
+    "Selected work from prototype to production: automation, integrations, and M365-native apps with measurable outcomes.";
+  const ogImage = "https://modustel.com/assets/og-modustel.svg";
   return [
-    { title: "Work — ModusTel" },
+    { title },
     {
       name: "description",
-      content:
-        "Selected work from prototype to production: automation, integrations, and M365-native apps with measurable outcomes.",
+      content: description,
+    },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: ogImage },
+    {
+      property: "og:image:alt",
+      content: "ModusTel logo with Prototype-to-Production Systems",
+    },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImage },
+    {
+      name: "twitter:image:alt",
+      content: "ModusTel logo with Prototype-to-Production Systems",
     },
   ];
 }

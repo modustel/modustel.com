@@ -1,12 +1,33 @@
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "ModusTel | Prototype-to-Production Systems";
+  const description =
+    "ModusTel builds outcomes-first systems: prototype-to-production automation, M365-native apps, and integration layers that remove operational friction.";
+  const ogImage = "https://modustel.com/assets/og-modustel.svg";
   return [
-    { title: "ModusTel | Prototype-to-Production Systems" },
+    { title },
     {
       name: "description",
-      content:
-        "ModusTel builds outcomes-first systems: prototype-to-production automation, M365-native apps, and integration layers that remove operational friction.",
+      content: description,
+    },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: ogImage },
+    {
+      property: "og:image:alt",
+      content: "ModusTel logo with Prototype-to-Production Systems",
+    },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImage },
+    {
+      name: "twitter:image:alt",
+      content: "ModusTel logo with Prototype-to-Production Systems",
     },
   ];
 }
