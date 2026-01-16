@@ -3,6 +3,19 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Anthropic-inspired color palette */
+  --color-cream: #faf9f6;
+  --color-cream-dark: #f5f3ef;
+  --color-sand: #e8e5df;
+  --color-brown: #2d2a26;
+  --color-brown-light: #4a4641;
+  --color-accent: #d4a574;
+  --color-accent-dark: #b8905f;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 @layer base {
