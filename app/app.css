@@ -24,6 +24,8 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -33,6 +35,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 /* Typography */
@@ -44,16 +47,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 5vw, 4.5rem);
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 1.5rem;
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.75rem, 4vw, 3rem);
   margin-top: 3rem;
   margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
 }
 
 h3 {
@@ -68,14 +78,28 @@ p {
   color: var(--color-charcoal);
 }
 
+@media (max-width: 768px) {
+  p {
+    font-size: 1rem;
+  }
+}
+
 a {
   color: var(--color-accent);
   text-decoration: none;
   transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a:hover {
   color: var(--color-accent-hover);
+}
+
+/* Touch-friendly tap targets */
+@media (pointer: coarse) {
+  a:not(.btn) {
+    padding: 0.25rem 0;
+  }
 }
 
 /* Container */
@@ -88,7 +112,13 @@ a:hover {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
   }
 }
 
@@ -121,6 +151,12 @@ a:hover {
 .brand:hover {
   opacity: 0.7;
   color: var(--color-warm-black);
+}
+
+@media (max-width: 480px) {
+  .brand {
+    font-size: 1.25rem;
+  }
 }
 
 .nav {
@@ -162,11 +198,121 @@ a:hover {
   background: var(--color-accent);
 }
 
+/* Mobile Navigation */
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 101;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-warm-black);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburgerOpen span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburgerOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.navDesktop {
+  display: flex;
+}
+
+.navMobile {
+  display: none;
+  flex-direction: column;
+  background: var(--color-cream);
+  border-top: 1px solid var(--color-taupe);
+  padding: 1.5rem 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.navMobile .navLink {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-bottom: 1px solid rgba(212, 206, 196, 0.3);
+}
+
+.navMobile .navLink:last-child {
+  border-bottom: none;
+}
+
+.navMobile .navLinkActive::after {
+  display: none;
+}
+
+.navMobileOpen {
+  max-height: 400px;
+}
+
+.mobileMenuOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 24, 22, 0.5);
+  z-index: 99;
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 900px) {
+  .mobileMenuButton {
+    display: block;
+  }
+
+  .navDesktop {
+    display: none;
+  }
+
+  .navMobile {
+    display: flex;
+  }
+
+  .mobileMenuOverlay {
+    display: block;
+  }
+}
+
 /* Main Content */
 .main {
   flex: 1;
   padding-top: 4rem;
   padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+  }
 }
 
 /* Footer */
@@ -181,6 +327,16 @@ a:hover {
   text-align: center;
   color: var(--color-charcoal);
   font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0;
+  }
+
+  .footer .container {
+    font-size: 0.85rem;
+  }
 }
 
 /* Hero Section */
@@ -199,6 +355,16 @@ a:hover {
   margin-bottom: 2rem;
 }
 
+@media (max-width: 768px) {
+  .hero {
+    margin-bottom: 4rem;
+  }
+
+  .hero p {
+    font-size: 1.125rem;
+  }
+}
+
 /* Buttons */
 .btn {
   display: inline-block;
@@ -210,6 +376,8 @@ a:hover {
   border-radius: 8px;
   transition: all 0.2s ease;
   border: 2px solid var(--color-accent);
+  min-height: 44px;
+  text-align: center;
 }
 
 .btn:hover {
@@ -236,6 +404,20 @@ a:hover {
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 1rem 1.75rem;
+    font-size: 1rem;
+    width: 100%;
+    display: block;
+  }
+
+  .cta-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 }
 
 /* Cards */
@@ -268,10 +450,20 @@ a:hover {
   margin-bottom: 0;
 }
 
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.25rem;
+  }
+}
+
 /* Grid Layouts */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
   margin: 2rem 0;
 }
@@ -280,15 +472,22 @@ a:hover {
   .grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    margin: 1.5rem 0;
   }
 }
 
 .grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
 }
 
 .grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+
+@media (max-width: 480px) {
+  .grid {
+    gap: 1.25rem;
+  }
 }
 
 /* Section Spacing */
@@ -298,6 +497,12 @@ section {
 
 section:last-child {
   margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    margin-bottom: 3.5rem;
+  }
 }
 
 /* Lists */
@@ -335,6 +540,21 @@ ol li strong {
   color: var(--color-warm-black);
 }
 
+@media (max-width: 768px) {
+  ul, ol {
+    margin-left: 1rem;
+  }
+
+  li {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+  }
+
+  ul li {
+    padding-left: 1.25rem;
+  }
+}
+
 /* Prose Styling */
 .prose {
   max-width: 900px;
@@ -361,6 +581,22 @@ ol li strong {
 
 .cta-section .cta-group {
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+  }
+
+  .cta-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-section p {
+    font-size: 1rem;
+  }
 }
 
 /* Utility Classes */
