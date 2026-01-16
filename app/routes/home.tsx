@@ -1,9 +1,10 @@
+import { Fragment } from "react";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "ModusTel | Prototype-to-Production Systems";
+  const title = "Modus Tel Labs | AI & Custom Software for Business";
   const description =
-    "ModusTel builds outcomes-first systems: prototype-to-production automation, M365-native apps, and integration layers that remove operational friction.";
+    "Transform your operations with custom AI, automation, and software solutions. Modernize your business processes with intelligent technology.";
   const ogImage = "https://modustel.com/assets/og-modustel.svg";
   return [
     { title },
@@ -16,7 +17,7 @@ export function meta({}: Route.MetaArgs) {
     { property: "og:image", content: ogImage },
     {
       property: "og:image:alt",
-      content: "ModusTel logo with Prototype-to-Production Systems",
+      content: "Modus Tel Labs — AI-powered business transformation",
     },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
@@ -25,194 +26,99 @@ export function meta({}: Route.MetaArgs) {
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
     { name: "twitter:image", content: ogImage },
-    {
-      name: "twitter:image:alt",
-      content: "ModusTel logo with Prototype-to-Production Systems",
-    },
   ];
 }
 
 export default function Home() {
   return (
-    <div className="prose">
+    <Fragment>
       {/* Hero Section */}
-      <div className="hero">
-        <h1>Prototype-to-production systems for operations teams.</h1>
-        <p>
-          ModusTel is an outcomes-first engineering lab. We design and ship AI-first
-          internal tooling that quietly removes friction from proposals, scheduling,
-          and operations — all with production-grade reliability.
-        </p>
+      <section className="container">
+        <div className="hero">
+          <div className="content">
+            <h1>Transform your operations with AI-powered solutions</h1>
+            <p>
+              Custom AI, automation, and software to modernize your business. We help companies streamline workflows, reduce costs, and stay competitive with intelligent technology.
+            </p>
+            <div className="cta-group">
+              <a href="/services" className="btn btn-accent">
+                Explore Our Work
+              </a>
+              <a href="/contact" className="btn btn-secondary">
+                Get in Touch
+              </a>
+            </div>
+          </div>
+          <div className="illustration">
+            <svg width="300" height="300" viewBox="0 0 300 300" fill="none">
+              {/* Placeholder illustration - replace with actual SVG */}
+              <circle cx="150" cy="150" r="140" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.1" />
+              <circle cx="150" cy="150" r="100" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.2" />
+              <circle cx="150" cy="150" r="60" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.3" />
+              <circle cx="150" cy="150" r="30" fill="#d97706" />
+            </svg>
+          </div>
+        </div>
+      </section>
 
-        <ul>
-          <li>Automated proposals that move from intake to PDF in hours</li>
-          <li>Operations dashboards that surface bottlenecks before they grow</li>
-          <li>M365-native apps that keep teams in the tools they already use</li>
-        </ul>
-
-        <p style={{ marginTop: '2.5rem' }}>
-          <a className="btn" href="/contact">
-            Book a discovery call
-          </a>{" "}
-          <a href="/contact">Send a brief</a>
-        </p>
-      </div>
-
-      {/* Who we build for */}
-      <section>
-        <h2>Who we build for</h2>
+      {/* Features Section */}
+      <section className="container">
         <div className="grid">
           <div className="card">
-            <h3>Enterprise teams</h3>
+            <h3>AI-Powered Solutions</h3>
             <p>
-              Operations-heavy groups that need durable automation, auditability,
-              and clear handoff to internal owners.
+              We leverage cutting-edge AI technology to automate workflows, reduce operational costs, and unlock new opportunities for your business.
             </p>
           </div>
           <div className="card">
-            <h3>Founders modernizing workflows</h3>
+            <h3>Advanced Research</h3>
             <p>
-              Leaders with legacy processes who want a prototype fast — and a path
-              to production without a rewrite.
+              Our team conducts cutting-edge research to advance the field while maintaining the highest ethical standards.
             </p>
           </div>
           <div className="card">
-            <h3>Microsoft 365 ecosystems</h3>
+            <h3>Real Impact</h3>
             <p>
-              Teams standardizing on M365 who want Teams, SharePoint, and Outlook
-              extensions that fit their security model.
+              We build products and solutions that create meaningful, measurable change in critical systems and operations.
             </p>
           </div>
         </div>
       </section>
 
-      {/* What we build */}
-      <section>
-        <h2>What we build</h2>
-        <div className="grid">
+      {/* What We Do Section */}
+      <section className="container">
+        <h2 className="prose">What We Do</h2>
+        <div className="grid grid-2">
           <div className="card">
-            <h3>Proposal Automation System</h3>
-            <p>Intake → scope → pricing → PDF → CRM sync.</p>
-          </div>
-          <div className="card">
-            <h3>Operations Command Center</h3>
-            <p>Dashboards, alerts, and workflows that keep teams aligned.</p>
-          </div>
-          <div className="card">
-            <h3>M365-native Internal Apps</h3>
-            <p>Teams, SharePoint, and Outlook extensions built for adoption.</p>
-          </div>
-          <div className="card">
-            <h3>Integration Layer</h3>
-            <p>Microsoft Graph, CRMs, accounting, and custom data sources.</p>
-          </div>
-          <div className="card">
-            <h3>Reliability Toolkit</h3>
-            <p>Logging, monitoring, tests, and runbooks baked in.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* How we work */}
-      <section>
-        <h2>How we work</h2>
-        <ol>
-          <li>
-            <strong>Discover</strong> — map workflows, constraints, and success
-            metrics in 1–2 sessions.
-          </li>
-          <li>
-            <strong>Sprint build</strong> — deliver a prototype with weekly demos
-            and iterative feedback.
-          </li>
-          <li>
-            <strong>Harden</strong> — add security, logging, tests, and
-            documentation.
-          </li>
-          <li>
-            <strong>Handoff or operate</strong> — runbooks, training, and optional
-            retainer support.
-          </li>
-        </ol>
-      </section>
-
-      {/* Selected work */}
-      <section>
-        <h2>Selected work</h2>
-        <div className="grid">
-          <div className="card">
-            <h3>Proposal automation for a services team</h3>
+            <h3>Custom Development</h3>
             <p>
-              <strong>Problem:</strong> proposals took 3–5 days and required
-              multiple handoffs.
-            </p>
-            <p>
-              <strong>Shipped:</strong> intake workflow, pricing logic, PDF
-              generation, and CRM sync.
-            </p>
-            <p>
-              <strong>Impact:</strong> cycle time reduced to under 4 hours; 90% of
-              proposals auto-generated.
+              Building tailored software solutions and automation systems designed specifically for your business needs and workflows.
             </p>
           </div>
           <div className="card">
-            <h3>Ops command center for field teams</h3>
+            <h3>Product Innovation</h3>
             <p>
-              <strong>Problem:</strong> status updates lived across email, Teams,
-              and spreadsheets.
-            </p>
-            <p>
-              <strong>Shipped:</strong> real-time dashboards, alerting, and
-              escalation workflows.
-            </p>
-            <p>
-              <strong>Impact:</strong> response time improved by 45%; fewer missed
-              handoffs.
-            </p>
-          </div>
-          <div className="card">
-            <h3>M365-native internal app rollout</h3>
-            <p>
-              <strong>Problem:</strong> adoption lagged when tools lived outside
-              the Microsoft stack.
-            </p>
-            <p>
-              <strong>Shipped:</strong> Teams app, SharePoint dashboard, and
-              Outlook add-in.
-            </p>
-            <p>
-              <strong>Impact:</strong> 3× weekly active usage after launch.
+              Building practical solutions that bring research insights into production systems.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Enterprise-grade */}
-      <section>
-        <h2>Enterprise-grade by default</h2>
-        <ul>
-          <li>Security reviews, access control, and audit-friendly logging</li>
-          <li>Documentation, runbooks, and CI pipelines for handoff</li>
-          <li>Performance budgets and observability baked into delivery</li>
-        </ul>
-      </section>
-
-      {/* Final CTA */}
-      <div className="cta-section">
-        <h2>Ready to remove operational friction?</h2>
-        <p>
-          Send a brief or book a discovery call and we'll map the fastest path to
-          production.
-        </p>
-        <div className="cta-group">
-          <a className="btn" href="/contact">
-            Send a brief
-          </a>
-          <a className="btn btn-secondary" href="/contact">
-            Book a call
-          </a>
+      {/* Call to Action */}
+      <section className="container">
+        <div className="cta-section">
+          <h2>Ready to modernize your operations?</h2>
+          <p>Discover how AI and custom software can transform your business and drive measurable results.</p>
+          <div className="cta-group">
+            <a href="/services" className="btn btn-accent">
+              View Our Services
+            </a>
+            <a href="/about" className="btn btn-secondary">
+              About Our Team
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </Fragment>
   );
 }
