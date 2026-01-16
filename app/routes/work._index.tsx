@@ -90,7 +90,7 @@ export default function WorkIndex() {
       </div>
 
       <p>
-        Want similar outcomes? <a href="/contact">Send a brief</a> and we’ll
+        Want similar outcomes? <a href="/contact">Get in touch</a> and we'll
         discuss scope and timing.
       </p>
     </div>

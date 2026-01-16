@@ -43,7 +43,7 @@ export default function Contact() {
       </p>
 
       <div className="card">
-        <h2>Send a brief</h2>
+        <h2>Get in touch</h2>
         <form
           action="mailto:hello@modustel.com"
           method="post"
@@ -51,12 +51,12 @@ export default function Contact() {
         >
           <label>
             Name
-            <input name="name" type="text" placeholder="Your name" />
+            <input name="name" type="text" placeholder="Your name" required />
           </label>
 
           <label>
             Email
-            <input name="email" type="email" placeholder="you@example.com" />
+            <input name="email" type="email" placeholder="you@example.com" required />
           </label>
 
           <label>
@@ -82,14 +82,12 @@ export default function Contact() {
 
           <label>
             Brief
-            <textarea name="message" placeholder="Short description" />
+            <textarea name="message" placeholder="Short description" required></textarea>
           </label>
 
-          <div>
-            <button type="submit" className="btn">
-              Send brief
-            </button>
-          </div>
+          <button type="submit" className="btn btn-accent">
+            Get in touch
+          </button>
         </form>
 
         <p className="muted">
@@ -98,18 +96,6 @@ export default function Contact() {
         </p>
       </div>
 
-      <section>
-        <h2>Book a discovery call</h2>
-        <p>
-          If you already know what you need, email us and we’ll share a calendar
-          link within one business day.
-        </p>
-        <p>
-          <a className="btn" href="mailto:hello@modustel.com?subject=Discovery%20Call">
-            Request a call
-          </a>
-        </p>
-      </section>
     </div>
   );
 }

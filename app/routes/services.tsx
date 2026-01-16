@@ -132,7 +132,7 @@ export default function Services() {
       </section>
 
       <p>
-        Ready to start? <a href="/contact">Send a brief</a> and we’ll respond
+        Ready to start? <a href="/contact">Get in touch</a> and we'll respond
         with a proposed plan.
       </p>
     </div>

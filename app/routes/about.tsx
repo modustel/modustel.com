@@ -75,7 +75,7 @@ export default function About() {
       </div>
 
       <p>
-        Let’s build something durable. <a href="/contact">Send a brief</a> and
+        Let's build something durable. <a href="/contact">Get in touch</a> and
         we’ll follow up quickly.
       </p>
     </div>
