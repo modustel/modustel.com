@@ -1,5 +1,11 @@
 import { Fragment } from "react";
 import type { Route } from "./+types/home";
+import { Card } from "../components/ui/Card";
+import { AIPoweredGraphic } from "../components/graphics/AIPoweredGraphic";
+import { FastImplementationGraphic } from "../components/graphics/FastImplementationGraphic";
+import { MeasurableResultsGraphic } from "../components/graphics/MeasurableResultsGraphic";
+import { CustomDevelopmentGraphic } from "../components/graphics/CustomDevelopmentGraphic";
+import { ScaleOptimizeGraphic } from "../components/graphics/ScaleOptimizeGraphic";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Modus Tel Labs | AI & Custom Software for Business";
@@ -83,47 +89,44 @@ export default function Home() {
       {/* Features Section */}
       <section className="container">
         <h2 className="section-title">Why Choose Modus Tel Labs</h2>
-        <div className="grid">
-          <div className="card animate-fade-in-stagger" style={{animationDelay: '0.1s'}}>
-            <div className="card-icon">🤖</div>
-            <h3>AI-Powered Solutions</h3>
-            <p>
-              We leverage cutting-edge AI technology to automate workflows, reduce operational costs, and unlock new opportunities for your business.
-            </p>
-          </div>
-          <div className="card animate-fade-in-stagger" style={{animationDelay: '0.2s'}}>
-            <div className="card-icon">⚡</div>
-            <h3>Fast Implementation</h3>
-            <p>
-              From concept to production in weeks, not months. We move fast without sacrificing quality or thoroughness.
-            </p>
-          </div>
-          <div className="card animate-fade-in-stagger" style={{animationDelay: '0.3s'}}>
-            <div className="card-icon">📈</div>
-            <h3>Measurable Results</h3>
-            <p>
-              Every solution is built to deliver ROI. We track metrics that matter and optimize for your bottom line.
-            </p>
-          </div>
+        <div className="grid stagger-animation">
+          <Card
+            graphic={<AIPoweredGraphic />}
+            title="AI-Powered Solutions"
+            description="We leverage cutting-edge AI technology to automate workflows, reduce operational costs, and unlock new opportunities for your business."
+            variant="gradient"
+          />
+          <Card
+            graphic={<FastImplementationGraphic />}
+            title="Fast Implementation"
+            description="From concept to production in weeks, not months. We move fast without sacrificing quality or thoroughness."
+            variant="gradient"
+          />
+          <Card
+            graphic={<MeasurableResultsGraphic />}
+            title="Measurable Results"
+            description="Every solution is built to deliver ROI. We track metrics that matter and optimize for your bottom line."
+            variant="gradient"
+          />
         </div>
       </section>
 
       {/* What We Do Section */}
       <section className="container">
         <h2 className="section-title">What We Do</h2>
-        <div className="grid grid-2">
-          <div className="card animate-fade-in-stagger" style={{animationDelay: '0.1s'}}>
-            <h3>🛠️ Custom Development</h3>
-            <p>
-              Bespoke AI models, intelligent automation platforms, and software built for your exact workflows. No off-the-shelf compromises.
-            </p>
-          </div>
-          <div className="card animate-fade-in-stagger" style={{animationDelay: '0.2s'}}>
-            <h3>🚀 Scale & Optimize</h3>
-            <p>
-              We don't just build—we deploy, monitor, and continuously improve your systems for maximum impact and efficiency.
-            </p>
-          </div>
+        <div className="grid grid-2 stagger-animation">
+          <Card
+            graphic={<CustomDevelopmentGraphic />}
+            title="Custom Development"
+            description="Bespoke AI models, intelligent automation platforms, and software built for your exact workflows. No off-the-shelf compromises."
+            variant="accent"
+          />
+          <Card
+            graphic={<ScaleOptimizeGraphic />}
+            title="Scale & Optimize"
+            description="We don't just build—we deploy, monitor, and continuously improve your systems for maximum impact and efficiency."
+            variant="accent"
+          />
         </div>
       </section>
 
