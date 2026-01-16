@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <Fragment>
       {/* Hero Section */}
-      <section className="container">
+      <section>
         <div className="hero animate-fade-in">
           <div className="content">
             <h1 className="hero-headline">Transform your business with AI that actually works</h1>
@@ -69,7 +69,7 @@ export default function Home() {
       </section>
 
       {/* Trust Section */}
-      <section className="container trust-section">
+      <section className="trust-section">
         <div className="trust-grid">
           <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.1s'}}>
             <div className="stat-number">50+</div>
@@ -87,7 +87,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="container">
+      <section>
         <h2 className="section-title">Why Choose Modus Tel Labs</h2>
         <div className="grid stagger-animation">
           <Card
@@ -112,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* What We Do Section */}
-      <section className="container">
+      <section>
         <h2 className="section-title">What We Do</h2>
         <div className="grid grid-2 stagger-animation">
           <Card
@@ -131,7 +131,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="container">
+      <section>
         <div className="cta-section-epic animate-fade-in">
           <h2>Ready to transform your operations?</h2>
           <p>Let's explore how AI and custom software can drive real, measurable growth for your business.</p>
