@@ -14,25 +14,28 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <div className="prose">
-      <h1>Prototype-to-production systems for operations teams.</h1>
-      <p>
-        ModusTel is an outcomes-first engineering lab. We design and ship AI-first
-        internal tooling that quietly removes friction from proposals, scheduling,
-        and operations — all with production-grade reliability.
-      </p>
+      {/* Hero Section */}
+      <div className="hero">
+        <h1>Prototype-to-production systems for operations teams.</h1>
+        <p>
+          ModusTel is an outcomes-first engineering lab. We design and ship AI-first
+          internal tooling that quietly removes friction from proposals, scheduling,
+          and operations — all with production-grade reliability.
+        </p>
 
-      <ul>
-        <li>Automated proposals that move from intake to PDF in hours</li>
-        <li>Operations dashboards that surface bottlenecks before they grow</li>
-        <li>M365-native apps that keep teams in the tools they already use</li>
-      </ul>
+        <ul>
+          <li>Automated proposals that move from intake to PDF in hours</li>
+          <li>Operations dashboards that surface bottlenecks before they grow</li>
+          <li>M365-native apps that keep teams in the tools they already use</li>
+        </ul>
 
-      <p>
-        <a className="btn" href="/contact">
-          Book a discovery call
-        </a>{" "}
-        <a href="/contact">Send a brief</a>
-      </p>
+        <p style={{ marginTop: '2.5rem' }}>
+          <a className="btn" href="/contact">
+            Book a discovery call
+          </a>{" "}
+          <a href="/contact">Send a brief</a>
+        </p>
+      </div>
 
       <section>
         <h2>Who we build for</h2>
