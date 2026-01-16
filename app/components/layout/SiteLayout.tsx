@@ -20,7 +20,9 @@ export function SiteLayout() {
     <MDXProvider components={mdxComponents}>
       <header className="header">
         <div className="container headerInner">
-          <div className="brand">ModusTel</div>
+          <NavLink to="/" className="brand">
+            ModusTel
+          </NavLink>
           <nav className="nav">
             <NavItem to="/" label="Home" />
             <NavItem to="/services" label="Services" />
