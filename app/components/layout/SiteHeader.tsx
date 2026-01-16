@@ -55,12 +55,14 @@ export function SiteHeader() {
             <span />
           </button>
           <nav id="site-nav" className={`nav ${isMenuOpen ? "navOpen" : ""}`}>
-            <NavItem to="/" label="Home" onSelect={handleSelect} />
-            <NavItem to="/services" label="Services" onSelect={handleSelect} />
-            <NavItem to="/work" label="Work" onSelect={handleSelect} />
-            <NavItem to="/insights" label="Insights" onSelect={handleSelect} />
-            <NavItem to="/about" label="About" onSelect={handleSelect} />
-            <NavItem to="/contact" label="Contact" onSelect={handleSelect} />
+            <div className="navPanel">
+              <NavItem to="/" label="Home" onSelect={handleSelect} />
+              <NavItem to="/services" label="Services" onSelect={handleSelect} />
+              <NavItem to="/work" label="Work" onSelect={handleSelect} />
+              <NavItem to="/insights" label="Insights" onSelect={handleSelect} />
+              <NavItem to="/about" label="About" onSelect={handleSelect} />
+              <NavItem to="/contact" label="Contact" onSelect={handleSelect} />
+            </div>
           </nav>
         </div>
       </header>

@@ -142,10 +142,14 @@ body {
 }
 
 .nav {
+  font-size: var(--font-size-sm);
+}
+
+.navPanel {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--spacing-lg);
-  font-size: var(--font-size-sm);
 }
 
 .menuToggle {
@@ -204,29 +208,49 @@ body {
     left: 0;
     right: 0;
     width: 100%;
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+    transition: visibility 0s linear 0.3s;
+  }
+
+  .nav.navOpen {
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navPanel {
+    width: 100%;
     flex-direction: column;
+    align-items: flex-start;
     gap: var(--spacing-md);
     padding: var(--spacing-lg) var(--spacing-md);
     background: var(--bg-primary);
     border-bottom: 1px solid var(--border-light);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transform: translateY(-100%);
     opacity: 0;
-    visibility: hidden;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
   }
 
-  .nav.navOpen {
+  .nav.navOpen .navPanel {
     transform: translateY(0);
     opacity: 1;
-    visibility: visible;
   }
 
   .menuToggle {
     display: flex;
     margin-left: auto;
+  }
+
+  .mobileMenuOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 22, 18, var(--opacity-sm));
+    z-index: 10;
   }
 }
 
