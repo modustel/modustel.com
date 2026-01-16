@@ -58,59 +58,62 @@ export default function Home() {
         </p>
       </div>
 
+      {/* Who we build for */}
       <section>
         <h2>Who we build for</h2>
         <div className="grid">
-          <section className="card">
+          <div className="card">
             <h3>Enterprise teams</h3>
             <p>
               Operations-heavy groups that need durable automation, auditability,
               and clear handoff to internal owners.
             </p>
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>Founders modernizing workflows</h3>
             <p>
               Leaders with legacy processes who want a prototype fast — and a path
               to production without a rewrite.
             </p>
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>Microsoft 365 ecosystems</h3>
             <p>
               Teams standardizing on M365 who want Teams, SharePoint, and Outlook
               extensions that fit their security model.
             </p>
-          </section>
+          </div>
         </div>
       </section>
 
+      {/* What we build */}
       <section>
         <h2>What we build</h2>
         <div className="grid">
-          <section className="card">
+          <div className="card">
             <h3>Proposal Automation System</h3>
             <p>Intake → scope → pricing → PDF → CRM sync.</p>
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>Operations Command Center</h3>
             <p>Dashboards, alerts, and workflows that keep teams aligned.</p>
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>M365-native Internal Apps</h3>
             <p>Teams, SharePoint, and Outlook extensions built for adoption.</p>
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>Integration Layer</h3>
             <p>Microsoft Graph, CRMs, accounting, and custom data sources.</p>
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>Reliability Toolkit</h3>
             <p>Logging, monitoring, tests, and runbooks baked in.</p>
-          </section>
+          </div>
         </div>
       </section>
 
+      {/* How we work */}
       <section>
         <h2>How we work</h2>
         <ol>
@@ -133,10 +136,11 @@ export default function Home() {
         </ol>
       </section>
 
+      {/* Selected work */}
       <section>
         <h2>Selected work</h2>
         <div className="grid">
-          <section className="card">
+          <div className="card">
             <h3>Proposal automation for a services team</h3>
             <p>
               <strong>Problem:</strong> proposals took 3–5 days and required
@@ -150,8 +154,8 @@ export default function Home() {
               <strong>Impact:</strong> cycle time reduced to under 4 hours; 90% of
               proposals auto-generated.
             </p>
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>Ops command center for field teams</h3>
             <p>
               <strong>Problem:</strong> status updates lived across email, Teams,
@@ -165,8 +169,8 @@ export default function Home() {
               <strong>Impact:</strong> response time improved by 45%; fewer missed
               handoffs.
             </p>
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>M365-native internal app rollout</h3>
             <p>
               <strong>Problem:</strong> adoption lagged when tools lived outside
@@ -179,10 +183,11 @@ export default function Home() {
             <p>
               <strong>Impact:</strong> 3× weekly active usage after launch.
             </p>
-          </section>
+          </div>
         </div>
       </section>
 
+      {/* Enterprise-grade */}
       <section>
         <h2>Enterprise-grade by default</h2>
         <ul>
@@ -192,19 +197,22 @@ export default function Home() {
         </ul>
       </section>
 
-      <section className="card">
+      {/* Final CTA */}
+      <div className="cta-section">
         <h2>Ready to remove operational friction?</h2>
         <p>
-          Send a brief or book a discovery call and we’ll map the fastest path to
+          Send a brief or book a discovery call and we'll map the fastest path to
           production.
         </p>
-        <p>
+        <div className="cta-group">
           <a className="btn" href="/contact">
             Send a brief
-          </a>{" "}
-          <a href="/contact">Book a call</a>
-        </p>
-      </section>
+          </a>
+          <a className="btn btn-secondary" href="/contact">
+            Book a call
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, Outlet } from "react-router";
 import { MDXProvider } from "@mdx-js/react";
 import { mdxComponents } from "../mdx/mdx-components";
+import { useState } from "react";
 
 function NavItem({
   to,
@@ -15,6 +16,7 @@ function NavItem({
   return (
     <NavLink
       to={to}
+      onClick={onClick}
       className={({ isActive }) =>
         `navLink ${isActive ? "navLinkActive" : ""}`
       }
@@ -58,7 +60,22 @@ export function SiteLayout() {
             <NavItem to="/contact" label="Contact" onSelect={handleSelect} />
           </nav>
         </div>
+
+        {/* Mobile Navigation */}
+        <nav className={`navMobile ${mobileMenuOpen ? "navMobileOpen" : ""}`}>
+          <NavItem to="/" label="Home" onClick={closeMobileMenu} />
+          <NavItem to="/services" label="Services" onClick={closeMobileMenu} />
+          <NavItem to="/work" label="Work" onClick={closeMobileMenu} />
+          <NavItem to="/insights" label="Insights" onClick={closeMobileMenu} />
+          <NavItem to="/about" label="About" onClick={closeMobileMenu} />
+          <NavItem to="/contact" label="Contact" onClick={closeMobileMenu} />
+        </nav>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="mobileMenuOverlay" onClick={closeMobileMenu}></div>
+      )}
 
       <main className="container main">
         <Outlet />
