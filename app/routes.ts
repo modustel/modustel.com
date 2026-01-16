@@ -6,6 +6,8 @@ export default [
   route("work", "routes/work._index.tsx"),
   route("work/:slug", "routes/work.$slug.mdx"),
   route("insights", "routes/insights._index.tsx"),
+  route("insights/introducing-our-approach", "routes/insights.introducing-our-approach.mdx"),
+  route("insights/designing-for-edge-cases", "routes/insights.designing-for-edge-cases.mdx"),
   route("insights/:slug", "routes/insights.$slug.mdx"),
   route("about", "routes/about.tsx"),
   route("contact", "routes/contact.tsx"),

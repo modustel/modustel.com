@@ -1,5 +1,11 @@
 import { Fragment } from "react";
 import type { Route } from "./+types/home";
+import { Card } from "../components/ui/Card";
+import { AIPoweredGraphic } from "../components/graphics/AIPoweredGraphic";
+import { FastImplementationGraphic } from "../components/graphics/FastImplementationGraphic";
+import { MeasurableResultsGraphic } from "../components/graphics/MeasurableResultsGraphic";
+import { CustomDevelopmentGraphic } from "../components/graphics/CustomDevelopmentGraphic";
+import { ScaleOptimizeGraphic } from "../components/graphics/ScaleOptimizeGraphic";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Modus Tel Labs | AI & Custom Software for Business";
@@ -34,87 +40,107 @@ export default function Home() {
     <Fragment>
       {/* Hero Section */}
       <section className="container">
-        <div className="hero">
+        <div className="hero animate-fade-in">
           <div className="content">
-            <h1>Transform your operations with AI-powered solutions</h1>
-            <p>
-              Custom AI, automation, and software to modernize your business. We help companies streamline workflows, reduce costs, and stay competitive with intelligent technology.
+            <h1 className="hero-headline">Transform your business with AI that actually works</h1>
+            <p className="hero-subtitle">
+              We build custom AI solutions, intelligent automation, and software that modernize your operations. From ideation to production—we deliver results that matter.
             </p>
             <div className="cta-group">
-              <a href="/services" className="btn btn-accent">
-                Explore Our Work
+              <a href="/services" className="btn btn-accent btn-large">
+                Start Your Transformation
               </a>
-              <a href="/contact" className="btn btn-secondary">
-                Get in Touch
+              <a href="/contact" className="btn btn-secondary btn-large">
+                Let's Talk
               </a>
             </div>
           </div>
-          <div className="illustration">
+          <div className="illustration animate-float">
             <svg width="300" height="300" viewBox="0 0 300 300" fill="none">
-              {/* Placeholder illustration - replace with actual SVG */}
-              <circle cx="150" cy="150" r="140" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.1" />
-              <circle cx="150" cy="150" r="100" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.2" />
-              <circle cx="150" cy="150" r="60" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.3" />
-              <circle cx="150" cy="150" r="30" fill="#d97706" />
+              {/* Enhanced illustration with animation */}
+              <circle cx="150" cy="150" r="140" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.1" className="animate-pulse-slow" />
+              <circle cx="150" cy="150" r="100" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.2" className="animate-pulse-slower" />
+              <circle cx="150" cy="150" r="60" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.3" className="animate-pulse-slowest" />
+              <circle cx="150" cy="150" r="30" fill="#d97706" className="animate-pulse" />
+              <text x="150" y="155" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold" className="select-none">AI</text>
             </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section className="container trust-section">
+        <div className="trust-grid">
+          <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.1s'}}>
+            <div className="stat-number">50+</div>
+            <div className="stat-label">Projects Delivered</div>
+          </div>
+          <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.2s'}}>
+            <div className="stat-number">$10M+</div>
+            <div className="stat-label">Value Generated</div>
+          </div>
+          <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.3s'}}>
+            <div className="stat-number">99%</div>
+            <div className="stat-label">Client Satisfaction</div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="container">
-        <div className="grid">
-          <div className="card">
-            <h3>AI-Powered Solutions</h3>
-            <p>
-              We leverage cutting-edge AI technology to automate workflows, reduce operational costs, and unlock new opportunities for your business.
-            </p>
-          </div>
-          <div className="card">
-            <h3>Advanced Research</h3>
-            <p>
-              Our team conducts cutting-edge research to advance the field while maintaining the highest ethical standards.
-            </p>
-          </div>
-          <div className="card">
-            <h3>Real Impact</h3>
-            <p>
-              We build products and solutions that create meaningful, measurable change in critical systems and operations.
-            </p>
-          </div>
+        <h2 className="section-title">Why Choose Modus Tel Labs</h2>
+        <div className="grid stagger-animation">
+          <Card
+            graphic={<AIPoweredGraphic />}
+            title="AI-Powered Solutions"
+            description="We leverage cutting-edge AI technology to automate workflows, reduce operational costs, and unlock new opportunities for your business."
+            variant="gradient"
+          />
+          <Card
+            graphic={<FastImplementationGraphic />}
+            title="Fast Implementation"
+            description="From concept to production in weeks, not months. We move fast without sacrificing quality or thoroughness."
+            variant="gradient"
+          />
+          <Card
+            graphic={<MeasurableResultsGraphic />}
+            title="Measurable Results"
+            description="Every solution is built to deliver ROI. We track metrics that matter and optimize for your bottom line."
+            variant="gradient"
+          />
         </div>
       </section>
 
       {/* What We Do Section */}
       <section className="container">
-        <h2 className="prose">What We Do</h2>
-        <div className="grid grid-2">
-          <div className="card">
-            <h3>Custom Development</h3>
-            <p>
-              Building tailored software solutions and automation systems designed specifically for your business needs and workflows.
-            </p>
-          </div>
-          <div className="card">
-            <h3>Product Innovation</h3>
-            <p>
-              Building practical solutions that bring research insights into production systems.
-            </p>
-          </div>
+        <h2 className="section-title">What We Do</h2>
+        <div className="grid grid-2 stagger-animation">
+          <Card
+            graphic={<CustomDevelopmentGraphic />}
+            title="Custom Development"
+            description="Bespoke AI models, intelligent automation platforms, and software built for your exact workflows. No off-the-shelf compromises."
+            variant="accent"
+          />
+          <Card
+            graphic={<ScaleOptimizeGraphic />}
+            title="Scale & Optimize"
+            description="We don't just build—we deploy, monitor, and continuously improve your systems for maximum impact and efficiency."
+            variant="accent"
+          />
         </div>
       </section>
 
       {/* Call to Action */}
       <section className="container">
-        <div className="cta-section">
-          <h2>Ready to modernize your operations?</h2>
-          <p>Discover how AI and custom software can transform your business and drive measurable results.</p>
+        <div className="cta-section-epic animate-fade-in">
+          <h2>Ready to transform your operations?</h2>
+          <p>Let's explore how AI and custom software can drive real, measurable growth for your business.</p>
           <div className="cta-group">
-            <a href="/services" className="btn btn-accent">
-              View Our Services
+            <a href="/contact" className="btn btn-accent btn-large">
+              Schedule a Consultation
             </a>
-            <a href="/about" className="btn btn-secondary">
-              About Our Team
+            <a href="/about" className="btn btn-secondary btn-large">
+              Learn About Us
             </a>
           </div>
         </div>

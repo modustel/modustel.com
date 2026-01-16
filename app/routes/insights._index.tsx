@@ -51,7 +51,7 @@ export default function InsightsIndex() {
       </ul>
 
       <p>
-        Want more detail on a topic? <a href="/contact">Send a brief</a> and we’ll
+        Want more detail on a topic? <a href="/contact">Get in touch</a> and we'll
         share relevant notes.
       </p>
     </div>

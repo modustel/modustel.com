@@ -1,4 +1,16 @@
 import type { Route } from "./+types/services";
+import { Card } from "../components/ui/Card";
+import { ProposalAutomationGraphic } from "../components/graphics/ProposalAutomationGraphic";
+import { OperationsCenterGraphic } from "../components/graphics/OperationsCenterGraphic";
+import { M365AppsGraphic } from "../components/graphics/M365AppsGraphic";
+import { IntegrationLayerGraphic } from "../components/graphics/IntegrationLayerGraphic";
+import { FixedSprintGraphic } from "../components/graphics/FixedSprintGraphic";
+import { RetainerGraphic } from "../components/graphics/RetainerGraphic";
+import { PrototypeToProductionGraphic } from "../components/graphics/PrototypeToProductionGraphic";
+import { DiscoverGraphic } from "../components/graphics/DiscoverGraphic";
+import { SprintBuildGraphic } from "../components/graphics/SprintBuildGraphic";
+import { HardenGraphic } from "../components/graphics/HardenGraphic";
+import { HandoffGraphic } from "../components/graphics/HandoffGraphic";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Services — Modus Tel Labs";
@@ -35,106 +47,132 @@ export function meta({}: Route.MetaArgs) {
 export default function Services() {
   return (
     <div className="prose">
-      <h1>Services</h1>
-      <p>
-        We package outcomes, not hours. Each engagement is designed to ship a
-        usable system quickly and then harden it for long-term use.
-      </p>
+      <div className="animate-fade-in">
+        <h1>Services</h1>
+        <p>
+          We package outcomes, not hours. Each engagement is designed to ship a
+          usable system quickly and then harden it for long-term use.
+        </p>
+      </div>
 
       <section>
-        <h2>Service packages</h2>
-        <div className="grid">
-          <section className="card">
-            <h3>Proposal Automation System</h3>
-            <p>
-              A full pipeline from intake to pricing to PDF delivery with CRM
-              sync.
-            </p>
+        <h2 className="section-title animate-fade-in">Service packages</h2>
+        <div className="grid stagger-animation">
+          <Card
+            graphic={<ProposalAutomationGraphic />}
+            title="Proposal Automation System"
+            description="A full pipeline from intake to pricing to PDF delivery with CRM sync."
+            variant="gradient"
+          >
             <ul>
               <li>Typical timeline: 4–6 weeks</li>
               <li>Deliverables: workflow map, automation, PDF templates</li>
             </ul>
-          </section>
+          </Card>
 
-          <section className="card">
-            <h3>Operations Command Center</h3>
-            <p>
-              A single pane of glass for dashboards, alerts, and escalation
-              workflows.
-            </p>
+          <Card
+            graphic={<OperationsCenterGraphic />}
+            title="Operations Command Center"
+            description="A single pane of glass for dashboards, alerts, and escalation workflows."
+            variant="gradient"
+          >
             <ul>
               <li>Typical timeline: 6–8 weeks</li>
               <li>Deliverables: dashboards, alerts, SOP playbooks</li>
             </ul>
-          </section>
+          </Card>
 
-          <section className="card">
-            <h3>M365-native Internal Apps</h3>
-            <p>
-              Teams, SharePoint, and Outlook extensions that fit existing
-              security and identity models.
-            </p>
+          <Card
+            graphic={<M365AppsGraphic />}
+            title="M365-native Internal Apps"
+            description="Teams, SharePoint, and Outlook extensions that fit existing security and identity models."
+            variant="gradient"
+          >
             <ul>
               <li>Typical timeline: 3–6 weeks</li>
               <li>Deliverables: app build, deployment plan, adoption guide</li>
             </ul>
-          </section>
+          </Card>
 
-          <section className="card">
-            <h3>Integration Layer</h3>
-            <p>
-              Microsoft Graph, CRMs, accounting, and custom data sources aligned
-              with your architecture.
-            </p>
+          <Card
+            graphic={<IntegrationLayerGraphic />}
+            title="Integration Layer"
+            description="Microsoft Graph, CRMs, accounting, and custom data sources aligned with your architecture."
+            variant="gradient"
+          >
             <ul>
               <li>Typical timeline: 4–8 weeks</li>
               <li>Deliverables: APIs, data contracts, observability</li>
             </ul>
-          </section>
+          </Card>
         </div>
       </section>
 
       <section>
-        <h2>Engagement models</h2>
-        <div className="grid">
-          <section className="card">
-            <h3>Fixed-scope sprint</h3>
-            <p>
-              Best for a defined prototype or workflow. We scope tightly, ship
-              fast, and deliver a handoff-ready codebase.
-            </p>
-          </section>
-          <section className="card">
-            <h3>Retainer partnership</h3>
-            <p>
-              Ongoing support for incremental automation, maintenance, and
-              continuous improvements.
-            </p>
-          </section>
-          <section className="card">
-            <h3>Prototype to production track</h3>
-            <p>
-              A phased engagement that starts with a POC and graduates into
-              enterprise-grade delivery.
-            </p>
-          </section>
+        <h2 className="section-title animate-fade-in">Engagement models</h2>
+        <div className="grid stagger-animation">
+          <Card
+            graphic={<FixedSprintGraphic />}
+            title="Fixed-scope sprint"
+            description="Best for a defined prototype or workflow. We scope tightly, ship fast, and deliver a handoff-ready codebase."
+            variant="accent"
+          />
+          <Card
+            graphic={<RetainerGraphic />}
+            title="Retainer partnership"
+            description="Ongoing support for incremental automation, maintenance, and continuous improvements."
+            variant="accent"
+          />
+          <Card
+            graphic={<PrototypeToProductionGraphic />}
+            title="Prototype to production track"
+            description="A phased engagement that starts with a POC and graduates into enterprise-grade delivery."
+            variant="accent"
+          />
         </div>
       </section>
 
       <section>
-        <h2>How we deliver</h2>
-        <ol>
-          <li>Discover workflows, constraints, and success metrics.</li>
-          <li>Sprint build with weekly demos and feedback loops.</li>
-          <li>Harden with security reviews, tests, and logging.</li>
-          <li>Handoff or operate with training and runbooks.</li>
-        </ol>
+        <h2 className="section-title animate-fade-in">How we deliver</h2>
+        <div className="grid stagger-animation">
+          <Card
+            graphic={<DiscoverGraphic />}
+            title="Discover"
+            description="Workflows, constraints, and success metrics."
+            variant="default"
+          />
+          <Card
+            graphic={<SprintBuildGraphic />}
+            title="Sprint build"
+            description="Weekly demos and feedback loops."
+            variant="default"
+          />
+          <Card
+            graphic={<HardenGraphic />}
+            title="Harden"
+            description="Security reviews, tests, and logging."
+            variant="default"
+          />
+          <Card
+            graphic={<HandoffGraphic />}
+            title="Handoff"
+            description="Training, runbooks, and support."
+            variant="default"
+          />
+        </div>
       </section>
 
-      <p>
-        Ready to start? <a href="/contact">Send a brief</a> and we’ll respond
-        with a proposed plan.
-      </p>
+      <div className="cta-section-epic animate-fade-in">
+        <h2>Ready to start?</h2>
+        <p>
+          Get in touch and we'll respond with a proposed plan tailored to your needs.
+        </p>
+        <div className="cta-group">
+          <a href="/contact" className="btn btn-accent btn-large">
+            Get in touch
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
