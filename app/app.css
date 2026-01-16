@@ -83,6 +83,7 @@
 html {
   font-family: var(--font-sans);
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -90,6 +91,8 @@ body {
   min-height: 100%;
   background: var(--bg-primary);
   color: var(--text-primary);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 ::selection {
@@ -101,6 +104,14 @@ body {
 .container {
   width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 32px);
+    padding: 0;
+  }
 }
 
 /* ========== HEADER ========== */
@@ -247,6 +258,13 @@ body {
   align-items: center;
   margin-bottom: var(--spacing-6xl);
   min-height: 600px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero .content {
+  width: 100%;
+  max-width: 100%;
 }
 
 .hero .content h1 {
@@ -255,6 +273,8 @@ body {
   color: var(--text-primary);
   margin: 0 0 var(--spacing-lg) 0;
   font-weight: 700;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .hero .content p {
@@ -262,6 +282,7 @@ body {
   line-height: var(--line-height-relaxed);
   color: var(--text-secondary);
   margin: 0 0 var(--spacing-2xl) 0;
+  max-width: 100%;
 }
 
 .hero .illustration {
@@ -269,6 +290,13 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 400px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero .illustration svg {
+  max-width: 100%;
+  height: auto;
 }
 
 @media (max-width: 968px) {
@@ -279,7 +307,15 @@ body {
   }
 
   .hero .illustration {
-    min-height: 300px;
+    min-height: 250px;
+  }
+
+  .hero .content h1 {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .hero .content p {
+    font-size: var(--font-size-base);
   }
 }
 
@@ -290,6 +326,13 @@ body {
   font-size: var(--font-size-md);
   line-height: var(--line-height-prose);
   max-width: 900px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .prose {
+    max-width: 100%;
+  }
 }
 
 .prose h1 {
@@ -353,18 +396,21 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-2xl);
   margin: var(--spacing-3xl) 0;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);
+    margin: var(--spacing-2xl) 0;
   }
 }
 
 @media (max-width: 480px) {
   .grid {
     gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
   }
 }
 
@@ -372,8 +418,20 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
+@media (max-width: 768px) {
+  .grid.grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
 .grid.grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .grid.grid-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ========== CARD ========== */
@@ -385,6 +443,8 @@ body {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 .card::before {
@@ -592,12 +652,18 @@ body {
   gap: var(--spacing-md);
   flex-wrap: wrap;
   margin-top: var(--spacing-2xl);
+  width: 100%;
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
   .cta-group {
     flex-direction: column;
     gap: var(--spacing-sm);
+  }
+
+  .cta-group .btn {
+    max-width: 100%;
   }
 }
 
@@ -609,17 +675,22 @@ body {
   padding: var(--spacing-4xl);
   text-align: center;
   margin-top: var(--spacing-5xl);
+  width: 100%;
+  max-width: 100%;
 }
 
 .cta-section h2 {
   margin: 0 0 var(--spacing-md) 0;
   color: var(--text-primary);
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .cta-section p {
   margin: 0 0 var(--spacing-xl) 0;
   color: var(--text-secondary);
   font-size: var(--font-size-lg);
+  max-width: 100%;
 }
 
 .cta-section .cta-group {
@@ -628,11 +699,11 @@ body {
 
 @media (max-width: 768px) {
   .cta-section {
-    padding: var(--spacing-3xl) var(--spacing-xl);
+    padding: var(--spacing-2xl) var(--spacing-lg);
   }
 
   .cta-section h2 {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
   }
 
   .cta-section p {
@@ -643,15 +714,28 @@ body {
 /* ========== SECTION ========== */
 section {
   margin-bottom: var(--spacing-5xl);
+  width: 100%;
+  max-width: 100%;
 }
 
 section:last-child {
   margin-bottom: 0;
 }
 
+section.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 @media (max-width: 768px) {
   section {
     margin-bottom: var(--spacing-4xl);
+  }
+
+  section.container {
+    width: calc(100% - 32px);
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -893,6 +977,8 @@ form button[type="submit"]:hover {
   padding: var(--spacing-5xl) 0;
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
+  width: 100%;
+  max-width: 100%;
 }
 
 .trust-grid {
@@ -900,6 +986,19 @@ form button[type="submit"]:hover {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--spacing-4xl);
   text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .trust-section {
+    margin: var(--spacing-4xl) 0;
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
 }
 
 .trust-stat {
@@ -926,6 +1025,15 @@ form button[type="submit"]:hover {
   font-weight: 700;
   margin-bottom: var(--spacing-4xl);
   color: var(--text-primary);
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: var(--spacing-2xl);
+  }
 }
 
 /* ========== CARD ICONS ========== */
@@ -945,6 +1053,8 @@ form button[type="submit"]:hover {
   margin-top: var(--spacing-6xl);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 .cta-section-epic::before {
@@ -964,6 +1074,8 @@ form button[type="submit"]:hover {
   z-index: 1;
   font-size: clamp(2rem, 4vw, 2.8rem);
   margin: 0 0 var(--spacing-md) 0;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .cta-section-epic p {
@@ -984,16 +1096,27 @@ form button[type="submit"]:hover {
 
 @media (max-width: 768px) {
   .cta-section-epic {
-    padding: var(--spacing-4xl) var(--spacing-xl);
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    margin-top: var(--spacing-4xl);
   }
 
   .cta-section-epic::before {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .cta-section-epic h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .cta-section-epic p {
+    font-size: var(--font-size-base);
+    max-width: 100%;
   }
 
   .btn-large {
     width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg) !important;
   }
 }
 
