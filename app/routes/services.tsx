@@ -1,9 +1,9 @@
 import type { Route } from "./+types/services";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "Services — ModusTel";
+  const title = "Services — Modus Tel Labs";
   const description =
-    "Outcome-driven service packages for automation, integrations, and M365-native apps that graduate from prototype to production.";
+    "Custom AI development, automation, and software solutions to modernize your business operations and drive results.";
   const ogImage = "https://modustel.com/assets/og-modustel.svg";
   return [
     { title },
@@ -16,7 +16,7 @@ export function meta({}: Route.MetaArgs) {
     { property: "og:image", content: ogImage },
     {
       property: "og:image:alt",
-      content: "ModusTel logo with Prototype-to-Production Systems",
+      content: "Modus Tel Labs — AI-powered transformation services",
     },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
@@ -27,7 +27,7 @@ export function meta({}: Route.MetaArgs) {
     { name: "twitter:image", content: ogImage },
     {
       name: "twitter:image:alt",
-      content: "ModusTel logo with Prototype-to-Production Systems",
+      content: "Modus Tel Labs — Research and products at the frontier of safety",
     },
   ];
 }

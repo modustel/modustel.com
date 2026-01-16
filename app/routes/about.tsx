@@ -1,9 +1,9 @@
 import type { Route } from "./+types/about";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "About — ModusTel";
+  const title = "About — Modus Tel Labs";
   const description =
-    "ModusTel builds outcomes-first systems that move from prototype to production with durable automation and M365-native apps.";
+    "Modus Tel Labs builds custom AI, automation, and software solutions to modernize business operations and drive digital transformation.";
   const ogImage = "https://modustel.com/assets/og-modustel.svg";
   return [
     { title },
@@ -16,7 +16,7 @@ export function meta({}: Route.MetaArgs) {
     { property: "og:image", content: ogImage },
     {
       property: "og:image:alt",
-      content: "ModusTel logo with Prototype-to-Production Systems",
+      content: "Modus Tel Labs — Business transformation through AI",
     },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
@@ -25,28 +25,24 @@ export function meta({}: Route.MetaArgs) {
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
     { name: "twitter:image", content: ogImage },
-    {
-      name: "twitter:image:alt",
-      content: "ModusTel logo with Prototype-to-Production Systems",
-    },
   ];
 }
 
 export default function About() {
   return (
     <div className="prose">
-      <h1>About</h1>
+      <h1>About Modus Tel Labs</h1>
       <p>
-        ModusTel exists to turn operational friction into dependable systems.
+        Modus Tel Labs exists to turn operational friction into dependable systems.
         We’re engineers who care about outcomes, long-lived codebases, and
         thoughtful handoff to internal teams.
       </p>
 
       <div className="grid">
         <section className="card">
-          <h2>Why ModusTel</h2>
+          <h2>Why Modus Tel Labs</h2>
           <p>
-            We saw too many prototypes stall before production. ModusTel bridges
+            We saw too many prototypes stall before production. Modus Tel Labs bridges
             that gap with clear sprints, hardening, and delivery artifacts that
             teams can own.
           </p>
@@ -55,9 +51,7 @@ export default function About() {
         <section className="card">
           <h2>Background</h2>
           <p>
-            Experience across enterprise operations, Microsoft 365 ecosystems,
-            and applied AI means we build tools that are fast to adopt and safe
-            to scale.
+            Experience across enterprise operations, automation platforms, and applied AI means we build solutions that are fast to deploy and easy to scale.
           </p>
         </section>
 
@@ -65,7 +59,7 @@ export default function About() {
           <h2>Values</h2>
           <ul>
             <li>Outcomes over novelty</li>
-            <li>Security and observability by default</li>
+            <li>Scalability and performance by design</li>
             <li>Documentation that enables handoff</li>
           </ul>
         </section>
