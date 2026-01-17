@@ -5,7 +5,20 @@ date: 2025-01-15
 author: Modus Tel Labs
 ---
 
-# Introducing Our Approach to AI & Automation
+import { ArticleLayout } from "../components/layout/ArticleLayout";
+
+export default function Layout({ children }) {
+  return (
+    <ArticleLayout
+      title={frontmatter.title}
+      description={frontmatter.description}
+      date={frontmatter.date}
+      author={frontmatter.author}
+    >
+      {children}
+    </ArticleLayout>
+  );
+}
 
 At Modus Tel Labs, we've spent years working with companies to modernize their operations through AI and custom software. Over time, we've developed a clear philosophy on how to do this effectively.
 
