@@ -6,6 +6,9 @@ import { FastImplementationGraphic } from "../components/graphics/FastImplementa
 import { MeasurableResultsGraphic } from "../components/graphics/MeasurableResultsGraphic";
 import { CustomDevelopmentGraphic } from "../components/graphics/CustomDevelopmentGraphic";
 import { ScaleOptimizeGraphic } from "../components/graphics/ScaleOptimizeGraphic";
+import { HeroAIGraphic } from "../components/graphics/HeroAIGraphic";
+import { TrustSection } from "../components/sections/TrustSection";
+import { CallToActionSection } from "../components/sections/CallToActionSection";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Modus Tel Labs | AI & Custom Software for Business";
@@ -56,35 +59,13 @@ export default function Home() {
             </div>
           </div>
           <div className="illustration animate-float">
-            <svg width="300" height="300" viewBox="0 0 300 300" fill="none">
-              {/* Enhanced illustration with animation */}
-              <circle cx="150" cy="150" r="140" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.1" className="animate-pulse-slow" />
-              <circle cx="150" cy="150" r="100" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.2" className="animate-pulse-slower" />
-              <circle cx="150" cy="150" r="60" fill="none" stroke="#d97706" strokeWidth="2" opacity="0.3" className="animate-pulse-slowest" />
-              <circle cx="150" cy="150" r="30" fill="#d97706" className="animate-pulse" />
-              <text x="150" y="155" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold" className="select-none">AI</text>
-            </svg>
+            <HeroAIGraphic />
           </div>
         </div>
       </section>
 
       {/* Trust Section */}
-      <section className="trust-section">
-        <div className="trust-grid">
-          <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.1s'}}>
-            <div className="stat-number">50+</div>
-            <div className="stat-label">Projects Delivered</div>
-          </div>
-          <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.2s'}}>
-            <div className="stat-number">$10M+</div>
-            <div className="stat-label">Value Generated</div>
-          </div>
-          <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.3s'}}>
-            <div className="stat-number">99%</div>
-            <div className="stat-label">Client Satisfaction</div>
-          </div>
-        </div>
-      </section>
+      <TrustSection />
 
       {/* Features Section */}
       <section>
@@ -131,20 +112,12 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section>
-        <div className="cta-section-epic animate-fade-in">
-          <h2>Ready to transform your operations?</h2>
-          <p>Let's explore how AI and custom software can drive real, measurable growth for your business.</p>
-          <div className="cta-group">
-            <a href="/contact" className="btn btn-accent btn-large">
-              Schedule a Consultation
-            </a>
-            <a href="/about" className="btn btn-secondary btn-large">
-              Learn About Us
-            </a>
-          </div>
-        </div>
-      </section>
+      <CallToActionSection
+        heading="Ready to transform your operations?"
+        body="Let's explore how AI and custom software can drive real, measurable growth for your business."
+        primaryCta={{ href: "/contact", label: "Schedule a Consultation" }}
+        secondaryCta={{ href: "/about", label: "Learn About Us" }}
+      />
     </Fragment>
   );
 }

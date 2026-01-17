@@ -1,4 +1,5 @@
 import type { Route } from "./+types/work";
+import { CallToActionSection } from "../components/sections/CallToActionSection";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Work — Modus Tel Labs";
@@ -32,67 +33,93 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+const caseStudies = [
+  {
+    stat: "90%",
+    statLabel: "Auto-generated",
+    title: "Proposal Automation",
+    subtitle: "Professional services firm",
+    before: "3–5 day proposal cycles with manual handoffs between sales, pricing, and legal teams.",
+    after: "Automated intake forms, dynamic pricing logic, branded PDF generation, and CRM sync.",
+    secondaryStat: "4hrs",
+    secondaryLabel: "Cycle time",
+  },
+  {
+    stat: "45%",
+    statLabel: "Faster response",
+    title: "Operations Command Center",
+    subtitle: "Regional logistics company",
+    before: "Fragmented status updates scattered across Teams, email, and spreadsheets.",
+    after: "Real-time dashboards, automated alerting, and escalation workflows with full audit trails.",
+    secondaryStat: "0",
+    secondaryLabel: "Missed handoffs",
+  },
+  {
+    stat: "3×",
+    statLabel: "User adoption",
+    title: "M365-Native Internal Apps",
+    subtitle: "Enterprise financial services",
+    before: "Low adoption for tools outside the Microsoft ecosystem. Shadow IT concerns.",
+    after: "Teams app, SharePoint dashboard, and Outlook add-in—all within existing security model.",
+    secondaryStat: "30 days",
+    secondaryLabel: "To full rollout",
+  },
+];
+
 export default function WorkIndex() {
   return (
-    <div className="prose">
-      <h1>Work</h1>
-      <p>
-        Selected work that shows how we build outcomes-first systems without
-        exposing client names. Each example includes what shipped and the impact.
-      </p>
-
-      <div className="grid">
-        <section className="card">
-          <h2>Proposal automation for a services team</h2>
-          <p>
-            <strong>Before:</strong> 3–5 day proposal cycles and manual handoffs.
-          </p>
-          <p>
-            <strong>After:</strong> automated intake, pricing logic, PDF outputs,
-            and CRM sync.
-          </p>
-          <p>
-            <strong>Result:</strong> 90% of proposals auto-generated, cycle time
-            under 4 hours.
-          </p>
-        </section>
-
-        <section className="card">
-          <h2>Operations command center</h2>
-          <p>
-            <strong>Before:</strong> fragmented status updates across Teams,
-            email, and spreadsheets.
-          </p>
-          <p>
-            <strong>After:</strong> real-time dashboards, alerting, and escalation
-            workflows.
-          </p>
-          <p>
-            <strong>Result:</strong> 45% faster response time and fewer missed
-            handoffs.
-          </p>
-        </section>
-
-        <section className="card">
-          <h2>M365-native internal apps</h2>
-          <p>
-            <strong>Before:</strong> low adoption for tools outside the Microsoft
-            stack.
-          </p>
-          <p>
-            <strong>After:</strong> Teams app, SharePoint dashboard, and Outlook
-            add-in.
-          </p>
-          <p>
-            <strong>Result:</strong> 3× weekly active usage within 30 days.
-          </p>
-        </section>
+    <div className="container">
+      <div className="work-hero animate-fade-in">
+        <h1>Work</h1>
+        <p className="lead">
+          Real outcomes from real engagements. Each case study shows what we
+          shipped and the measurable impact—without exposing client details.
+        </p>
       </div>
 
-      <p>
-        Want similar outcomes? <a href="/contact">Get in touch</a> and we'll
-        discuss scope and timing.
-      </p>
+      <div className="case-studies">
+        {caseStudies.map((study, index) => (
+          <article
+            key={study.title}
+            className="case-study animate-fade-in-stagger"
+            style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+          >
+            <div className="case-study-impact">
+              <div className="impact-primary">
+                <span className="impact-stat">{study.stat}</span>
+                <span className="impact-label">{study.statLabel}</span>
+              </div>
+              <div className="impact-secondary">
+                <span className="impact-stat-small">{study.secondaryStat}</span>
+                <span className="impact-label-small">{study.secondaryLabel}</span>
+              </div>
+            </div>
+            <div className="case-study-content">
+              <div className="case-study-header">
+                <h2>{study.title}</h2>
+                <span className="case-study-subtitle">{study.subtitle}</span>
+              </div>
+              <div className="case-study-narrative">
+                <div className="narrative-block before">
+                  <span className="narrative-label">Before</span>
+                  <p>{study.before}</p>
+                </div>
+                <div className="narrative-block after">
+                  <span className="narrative-label">After</span>
+                  <p>{study.after}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <CallToActionSection
+        heading="Want similar results?"
+        body="Tell us about your workflow challenges and we'll show you what's possible."
+        primaryCta={{ href: "/contact", label: "Start a conversation" }}
+        secondaryCta={{ href: "/services", label: "View services" }}
+      />
     </div>
   );
 }

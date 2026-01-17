@@ -34,13 +34,13 @@ export function SiteHeader() {
     <>
       <header className="header">
         <div className="container headerInner">
-          <a href="/" className="flex items-center gap-2">
+          <a href="/" className="brand">
             <img
               src="/assets/logos/ModusTelLogo.svg"
               alt="Modus Tel Labs"
-              className="h-8 w-auto"
+              className="brand-logo"
             />
-            <span className="text-lg font-semibold">Modus Tel Labs</span>
+            <span className="brand-text">Modus Tel Labs</span>
           </a>
           <button
             className="menuToggle"

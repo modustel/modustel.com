@@ -11,6 +11,7 @@ import { DiscoverGraphic } from "../components/graphics/DiscoverGraphic";
 import { SprintBuildGraphic } from "../components/graphics/SprintBuildGraphic";
 import { HardenGraphic } from "../components/graphics/HardenGraphic";
 import { HandoffGraphic } from "../components/graphics/HandoffGraphic";
+import { CallToActionSection } from "../components/sections/CallToActionSection";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Services — Modus Tel Labs";
@@ -162,17 +163,12 @@ export default function Services() {
         </div>
       </section>
 
-      <div className="cta-section-epic animate-fade-in">
-        <h2>Ready to start?</h2>
-        <p>
-          Get in touch and we'll respond with a proposed plan tailored to your needs.
-        </p>
-        <div className="cta-group">
-          <a href="/contact" className="btn btn-accent btn-large">
-            Get in touch
-          </a>
-        </div>
-      </div>
+      <CallToActionSection
+        as="div"
+        heading="Ready to start?"
+        body="Get in touch and we'll respond with a proposed plan tailored to your needs."
+        primaryCta={{ href: "/contact", label: "Get in touch" }}
+      />
     </div>
   );
 }

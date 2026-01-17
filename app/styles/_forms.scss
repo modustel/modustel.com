@@ -1,0 +1,52 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+form {
+  display: grid;
+  gap: $spacing-lg;
+}
+
+label {
+  display: grid;
+  gap: $spacing-xs;
+  font-weight: 500;
+  font-size: $font-size-sm;
+  color: $text-primary;
+}
+
+input,
+select,
+textarea {
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  font-family: $font-sans;
+  font-size: $font-size-base;
+  background: white;
+  color: $text-primary;
+  transition: all $transition-fast;
+
+  &:focus {
+    @include focus-ring;
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+form button[type="submit"] {
+  background: $accent;
+  color: white;
+  border-color: $accent;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+
+  &:hover {
+    background: $accent-dark;
+    border-color: $accent-dark;
+  }
+}

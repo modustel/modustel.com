@@ -35,14 +35,16 @@ export function meta({}: Route.MetaArgs) {
 export default function Contact() {
   return (
     <div className="prose">
-      <h1>Contact</h1>
+      <div className="animate-fade-in">
+        <h1>Contact</h1>
 
-      <p>
-        Tell us about the workflow, the bottlenecks, and the outcome you want. We
-        reply within two business days with next steps and timing.
-      </p>
+        <p>
+          Tell us about the workflow, the bottlenecks, and the outcome you want. We
+          reply within two business days with next steps and timing.
+        </p>
+      </div>
 
-      <div className="card">
+      <div className="card stagger-animation">
         <h2>Get in touch</h2>
         <form
           action="mailto:hello@modustel.com"

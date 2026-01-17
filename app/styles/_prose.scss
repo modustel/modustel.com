@@ -1,0 +1,71 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.prose {
+  display: grid;
+  gap: $spacing-xl;
+  font-size: $font-size-md;
+  line-height: $line-height-prose;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+
+  @include mobile {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    line-height: $line-height-tight;
+    color: $text-primary;
+    margin: $spacing-2xl 0 $spacing-md 0;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: $line-height-tight;
+    color: $text-primary;
+    margin: $spacing-2xl 0 $spacing-md 0;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: $font-size-xl;
+    color: $text-primary;
+    margin: $spacing-lg 0 $spacing-md 0;
+    font-weight: 600;
+  }
+
+  p,
+  li {
+    color: $text-secondary;
+    margin: 0;
+  }
+
+  a {
+    color: $accent;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: $spacing-xl;
+    margin: 0;
+    display: grid;
+    gap: $spacing-sm;
+  }
+
+  ul li {
+    list-style: disc;
+  }
+
+  ol li {
+    list-style: decimal;
+  }
+}

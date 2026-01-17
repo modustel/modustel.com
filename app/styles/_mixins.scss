@@ -1,0 +1,116 @@
+@use "variables" as *;
+
+// ========== RESPONSIVE BREAKPOINTS ==========
+@mixin mobile {
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin mobile-small {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+// ========== FLEXBOX HELPERS ==========
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// ========== CARD STYLES ==========
+@mixin card-base {
+  background: white;
+  border: 1px solid $border;
+  border-radius: $radius-xl;
+  padding: $spacing-2xl;
+  transition: all $transition-smooth;
+}
+
+@mixin card-hover {
+  border-color: $accent;
+  box-shadow: $shadow-lg rgba($accent, 0.12);
+  transform: translateY(-4px);
+}
+
+// ========== GRADIENT TEXT ==========
+@mixin gradient-text($start: $accent, $end: $accent-dark) {
+  background: linear-gradient(135deg, $start 0%, $end 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ========== TYPOGRAPHY ==========
+@mixin heading-xl {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: $line-height-tight;
+  color: $text-primary;
+}
+
+@mixin heading-lg {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: $line-height-tight;
+  color: $text-primary;
+}
+
+@mixin heading-md {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: $line-height-tight;
+  color: $text-primary;
+}
+
+@mixin body-text {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: $text-secondary;
+}
+
+@mixin lead-text {
+  font-size: $font-size-lg;
+  line-height: $line-height-relaxed;
+  color: $text-secondary;
+}
+
+// ========== LABEL STYLES ==========
+@mixin label-uppercase {
+  font-size: $font-size-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+// ========== FOCUS STATES ==========
+@mixin focus-ring {
+  outline: none;
+  border-color: $accent;
+  box-shadow: 0 0 0 3px rgba($accent, $opacity-xs);
+}

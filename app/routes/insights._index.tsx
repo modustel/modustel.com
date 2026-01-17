@@ -35,13 +35,15 @@ export function meta({}: Route.MetaArgs) {
 export default function InsightsIndex() {
   return (
     <div className="prose">
-      <h1>Insights</h1>
-      <p>
-        Short essays on patterns, lessons learned, and practical approaches to
-        operational automation.
-      </p>
+      <div className="animate-fade-in">
+        <h1>Insights</h1>
+        <p>
+          Short essays on patterns, lessons learned, and practical approaches to
+          operational automation.
+        </p>
+      </div>
 
-      <ul>
+      <ul className="stagger-animation">
         <li>
           <a href="/insights/introducing-our-approach">Introducing our approach</a>
         </li>
