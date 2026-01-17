@@ -35,13 +35,15 @@ export function meta({}: Route.MetaArgs) {
 export default function WorkIndex() {
   return (
     <div className="prose">
-      <h1>Work</h1>
-      <p>
-        Selected work that shows how we build outcomes-first systems without
-        exposing client names. Each example includes what shipped and the impact.
-      </p>
+      <div className="animate-fade-in">
+        <h1>Work</h1>
+        <p>
+          Selected work that shows how we build outcomes-first systems without
+          exposing client names. Each example includes what shipped and the impact.
+        </p>
+      </div>
 
-      <div className="grid">
+      <div className="grid stagger-animation">
         <section className="card">
           <h2>Proposal automation for a services team</h2>
           <p>
