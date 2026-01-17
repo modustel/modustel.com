@@ -8,6 +8,7 @@ import { CustomDevelopmentGraphic } from "../components/graphics/CustomDevelopme
 import { ScaleOptimizeGraphic } from "../components/graphics/ScaleOptimizeGraphic";
 import { HeroAIGraphic } from "../components/graphics/HeroAIGraphic";
 import { TrustSection } from "../components/sections/TrustSection";
+import { CallToActionSection } from "../components/sections/CallToActionSection";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Modus Tel Labs | AI & Custom Software for Business";
@@ -111,20 +112,12 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section>
-        <div className="cta-section-epic animate-fade-in">
-          <h2>Ready to transform your operations?</h2>
-          <p>Let's explore how AI and custom software can drive real, measurable growth for your business.</p>
-          <div className="cta-group">
-            <a href="/contact" className="btn btn-accent btn-large">
-              Schedule a Consultation
-            </a>
-            <a href="/about" className="btn btn-secondary btn-large">
-              Learn About Us
-            </a>
-          </div>
-        </div>
-      </section>
+      <CallToActionSection
+        heading="Ready to transform your operations?"
+        body="Let's explore how AI and custom software can drive real, measurable growth for your business."
+        primaryCta={{ href: "/contact", label: "Schedule a Consultation" }}
+        secondaryCta={{ href: "/about", label: "Learn About Us" }}
+      />
     </Fragment>
   );
 }
