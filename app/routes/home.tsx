@@ -6,6 +6,7 @@ import { FastImplementationGraphic } from "../components/graphics/FastImplementa
 import { MeasurableResultsGraphic } from "../components/graphics/MeasurableResultsGraphic";
 import { CustomDevelopmentGraphic } from "../components/graphics/CustomDevelopmentGraphic";
 import { ScaleOptimizeGraphic } from "../components/graphics/ScaleOptimizeGraphic";
+import { TrustSection } from "../components/sections/TrustSection";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Modus Tel Labs | AI & Custom Software for Business";
@@ -69,22 +70,7 @@ export default function Home() {
       </section>
 
       {/* Trust Section */}
-      <section className="trust-section">
-        <div className="trust-grid">
-          <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.1s'}}>
-            <div className="stat-number">50+</div>
-            <div className="stat-label">Projects Delivered</div>
-          </div>
-          <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.2s'}}>
-            <div className="stat-number">$10M+</div>
-            <div className="stat-label">Value Generated</div>
-          </div>
-          <div className="trust-stat animate-fade-in-stagger" style={{animationDelay: '0.3s'}}>
-            <div className="stat-number">99%</div>
-            <div className="stat-label">Client Satisfaction</div>
-          </div>
-        </div>
-      </section>
+      <TrustSection />
 
       {/* Features Section */}
       <section>
