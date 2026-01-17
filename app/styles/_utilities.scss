@@ -1,0 +1,23 @@
+@use "variables" as *;
+
+.text-center {
+  text-align: center;
+}
+
+.mb-large {
+  margin-bottom: $spacing-3xl;
+}
+
+.mt-large {
+  margin-top: $spacing-3xl;
+}
+
+.muted {
+  color: $text-tertiary;
+}
+
+.lead {
+  font-size: $font-size-lg;
+  line-height: $line-height-relaxed;
+  color: $text-secondary;
+}

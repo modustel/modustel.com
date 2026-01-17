@@ -1,0 +1,112 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.cta-section {
+  background: $bg-secondary;
+  border: 1px solid $border;
+  border-radius: $radius-xl;
+  padding: $spacing-4xl;
+  text-align: center;
+  margin-top: $spacing-5xl;
+  width: 100%;
+  max-width: 100%;
+
+  h2 {
+    margin: 0 0 $spacing-md 0;
+    color: $text-primary;
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+
+  p {
+    margin: 0 0 $spacing-xl 0;
+    color: $text-secondary;
+    font-size: $font-size-lg;
+    max-width: 100%;
+  }
+
+  .cta-group {
+    justify-content: center;
+  }
+
+  @include mobile {
+    padding: $spacing-2xl $spacing-lg;
+
+    h2 {
+      font-size: $font-size-xl;
+    }
+
+    p {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+.cta-section-epic {
+  background: linear-gradient(135deg, $bg-secondary 0%, #fff5ee 100%);
+  border: 2px solid $border;
+  border-radius: $radius-xl;
+  padding: $spacing-6xl $spacing-4xl;
+  text-align: center;
+  margin-top: $spacing-6xl;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba($accent, 0.1) 0%, transparent 70%);
+    border-radius: $radius-full;
+    pointer-events: none;
+  }
+
+  h2 {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin: 0 0 $spacing-md 0;
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+
+  p {
+    position: relative;
+    z-index: 1;
+    font-size: $font-size-lg;
+    margin: 0 0 $spacing-2xl 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-group {
+    position: relative;
+    z-index: 1;
+    justify-content: center;
+  }
+
+  @include mobile {
+    padding: $spacing-3xl $spacing-lg;
+    margin-top: $spacing-4xl;
+
+    &::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    p {
+      font-size: $font-size-base;
+      max-width: 100%;
+    }
+  }
+}

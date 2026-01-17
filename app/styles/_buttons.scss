@@ -1,0 +1,80 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-xl;
+  border-radius: $radius-md;
+  background: $text-primary;
+  color: white;
+  font-weight: 600;
+  font-size: $font-size-base;
+  text-decoration: none;
+  border: 2px solid $text-primary;
+  transition: all $transition-fast;
+  cursor: pointer;
+  min-height: 44px;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-md rgba($text-primary, $opacity-sm);
+  }
+
+  &.btn-secondary {
+    background: transparent;
+    color: $text-primary;
+
+    &:hover {
+      background: $bg-tertiary;
+    }
+  }
+
+  &.btn-accent {
+    background: $accent;
+    border-color: $accent;
+    color: white;
+
+    &:hover {
+      background: $accent-dark;
+      border-color: $accent-dark;
+    }
+  }
+
+  @include mobile {
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+  }
+}
+
+.btn-large {
+  padding: $spacing-md $spacing-2xl !important;
+  font-size: $font-size-md !important;
+  min-height: 50px !important;
+
+  @include mobile {
+    width: 100%;
+    padding: $spacing-md $spacing-lg !important;
+  }
+}
+
+.cta-group {
+  display: flex;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+  margin-top: $spacing-2xl;
+  width: 100%;
+  max-width: 100%;
+
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    .btn {
+      max-width: 100%;
+    }
+  }
+}

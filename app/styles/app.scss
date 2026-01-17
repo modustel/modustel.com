@@ -1,0 +1,22 @@
+// ========== SCSS PARTIALS ==========
+// All @use statements must come first
+@use "variables" as *;
+@use "mixins" as *;
+@use "base";
+@use "header";
+@use "footer";
+@use "hero";
+@use "trust-section";
+@use "cta-section";
+@use "prose";
+@use "grid";
+@use "cards";
+@use "buttons";
+@use "forms";
+@use "about";
+@use "work";
+@use "utilities";
+@use "animations";
+
+// Tailwind import at the end (uses CSS @import syntax which is allowed after @use)
+@import "tailwindcss";

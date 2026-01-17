@@ -15,6 +15,8 @@
       "routes/work._index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/work.$slug": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/insights._index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/insights.introducing-our-approach": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/insights.designing-for-edge-cases": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/insights.$slug": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/about": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/contact": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
@@ -67,6 +69,24 @@
         "parentId": "root",
         "file": "app/routes/insights._index.tsx",
         "path": "insights",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/insights.introducing-our-approach": {
+        "id": "routes/insights.introducing-our-approach",
+        "parentId": "root",
+        "file": "app/routes/insights.introducing-our-approach.mdx",
+        "path": "insights/introducing-our-approach",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/insights.designing-for-edge-cases": {
+        "id": "routes/insights.designing-for-edge-cases",
+        "parentId": "root",
+        "file": "app/routes/insights.designing-for-edge-cases.mdx",
+        "path": "insights/designing-for-edge-cases",
         "config": {
           "runtime": "nodejs"
         }
@@ -148,6 +168,18 @@
         "file": "routes/insights._index.tsx",
         "path": "insights"
       },
+      "routes/insights.introducing-our-approach": {
+        "id": "routes/insights.introducing-our-approach",
+        "parentId": "root",
+        "file": "routes/insights.introducing-our-approach.mdx",
+        "path": "insights/introducing-our-approach"
+      },
+      "routes/insights.designing-for-edge-cases": {
+        "id": "routes/insights.designing-for-edge-cases",
+        "parentId": "root",
+        "file": "routes/insights.designing-for-edge-cases.mdx",
+        "path": "insights/designing-for-edge-cases"
+      },
       "routes/insights.$slug": {
         "id": "routes/insights.$slug",
         "parentId": "root",
@@ -200,6 +232,14 @@
           {
             "file": "routes/insights._index.tsx",
             "path": "insights"
+          },
+          {
+            "file": "routes/insights.introducing-our-approach.mdx",
+            "path": "insights/introducing-our-approach"
+          },
+          {
+            "file": "routes/insights.designing-for-edge-cases.mdx",
+            "path": "insights/designing-for-edge-cases"
           },
           {
             "file": "routes/insights.$slug.mdx",

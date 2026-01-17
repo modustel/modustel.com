@@ -1,0 +1,84 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-6xl;
+  align-items: center;
+  margin-bottom: $spacing-6xl;
+  min-height: 600px;
+  width: 100%;
+  max-width: 100%;
+
+  .content {
+    width: 100%;
+    max-width: 100%;
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      line-height: $line-height-tight;
+      color: $text-primary;
+      margin: 0 0 $spacing-lg 0;
+      font-weight: 700;
+      max-width: 100%;
+      word-wrap: break-word;
+    }
+
+    p {
+      font-size: $font-size-lg;
+      line-height: $line-height-relaxed;
+      color: $text-secondary;
+      margin: 0 0 $spacing-2xl 0;
+      max-width: 100%;
+    }
+  }
+
+  .illustration {
+    @include flex-center;
+    min-height: 400px;
+    width: 100%;
+    max-width: 100%;
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: $spacing-4xl;
+    min-height: auto;
+
+    .illustration {
+      min-height: 250px;
+    }
+
+    .content {
+      h1 {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+      }
+
+      p {
+        font-size: $font-size-base;
+      }
+    }
+  }
+}
+
+.hero-headline {
+  font-size: clamp(3rem, 6vw, 4rem) !important;
+  font-weight: 800;
+  line-height: 1.1 !important;
+  @include gradient-text($text-primary, $accent-dark);
+  margin: 0 0 $spacing-lg 0 !important;
+}
+
+.hero-subtitle {
+  font-size: $font-size-lg !important;
+  line-height: 1.7 !important;
+  color: $text-secondary !important;
+  max-width: 600px;
+  margin: 0 0 $spacing-2xl 0 !important;
+}

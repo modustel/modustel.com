@@ -1,0 +1,37 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-2xl;
+  margin: $spacing-3xl 0;
+  width: 100%;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+    margin: $spacing-2xl 0;
+  }
+
+  @include mobile-small {
+    gap: $spacing-lg;
+    margin: $spacing-xl 0;
+  }
+
+  &.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}
