@@ -47,7 +47,7 @@ export default function Contact() {
       <div className="card stagger-animation">
         <h2>Get in touch</h2>
         <form
-          action="mailto:hello@modustel.com"
+          action="mailto:contact@modustel.com"
           method="post"
           encType="text/plain"
         >
@@ -94,7 +94,7 @@ export default function Contact() {
 
         <p className="muted">
           Prefer email? Reach us at{" "}
-          <a href="mailto:hello@modustel.com">hello@modustel.com</a>.
+          <a href="mailto:contact@modustel.com">contact@modustel.com</a>.
         </p>
       </div>
 
