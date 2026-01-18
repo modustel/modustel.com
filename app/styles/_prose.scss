@@ -15,26 +15,18 @@
   }
 
   h1 {
-    font-size: clamp(2.5rem, 4vw, 3.75rem);
-    line-height: $line-height-tight;
-    color: $text-primary;
+    @include heading-lg;
     margin: $spacing-2xl 0 $spacing-md 0;
-    font-weight: 700;
   }
 
   h2 {
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    line-height: $line-height-tight;
-    color: $text-primary;
+    @include heading-md;
     margin: $spacing-2xl 0 $spacing-md 0;
-    font-weight: 700;
   }
 
   h3 {
-    font-size: $font-size-xl;
-    color: $text-primary;
+    @include heading-sm;
     margin: $spacing-lg 0 $spacing-md 0;
-    font-weight: 600;
   }
 
   p,
@@ -121,12 +113,8 @@
 }
 
 .article-title {
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  line-height: $line-height-tight;
-  color: $text-primary;
-  font-weight: 700;
+  @include heading-lg;
   margin: 0 0 $spacing-lg 0;
-  letter-spacing: -0.02em;
 }
 
 .article-description {
@@ -141,10 +129,7 @@
   gap: $spacing-lg;
 
   h2 {
-    font-size: clamp(1.5rem, 3vw, 1.875rem);
-    line-height: $line-height-tight;
-    color: $text-primary;
-    font-weight: 700;
+    @include heading-md;
     margin: $spacing-2xl 0 0 0;
     padding-top: $spacing-xl;
     border-top: 1px solid $border-light;
@@ -157,9 +142,7 @@
   }
 
   h3 {
-    font-size: $font-size-xl;
-    color: $text-primary;
-    font-weight: 600;
+    @include heading-sm;
     margin: $spacing-lg 0 0 0;
   }
 
@@ -310,11 +293,8 @@
 }
 
 .insights-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 700;
-  color: $text-primary;
+  @include heading-xl;
   margin: 0 0 $spacing-md 0;
-  letter-spacing: -0.02em;
 }
 
 .insights-description {
@@ -386,9 +366,7 @@
 }
 
 .insight-card-title {
-  font-size: $font-size-xl;
-  font-weight: 600;
-  color: $text-primary;
+  @include heading-sm;
   margin: 0 0 $spacing-sm 0;
   transition: color $transition-fast;
   display: flex;

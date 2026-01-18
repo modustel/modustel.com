@@ -12,6 +12,7 @@ import { SprintBuildGraphic } from "../components/graphics/SprintBuildGraphic";
 import { HardenGraphic } from "../components/graphics/HardenGraphic";
 import { HandoffGraphic } from "../components/graphics/HandoffGraphic";
 import { CallToActionSection } from "../components/sections/CallToActionSection";
+import { Page } from "../components/layout/Page";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Services — Modus Tel Labs";
@@ -47,7 +48,16 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Services() {
   return (
-    <div className="prose">
+    <Page
+      prose
+      footer={
+        <CallToActionSection
+          heading="Ready to start?"
+          body="Get in touch and we'll respond with a proposed plan tailored to your needs."
+          primaryCta={{ href: "/contact", label: "Get in touch" }}
+        />
+      }
+    >
       <div className="animate-fade-in">
         <h1>Services</h1>
         <p>
@@ -162,13 +172,6 @@ export default function Services() {
           />
         </div>
       </section>
-
-      <CallToActionSection
-        as="div"
-        heading="Ready to start?"
-        body="Get in touch and we'll respond with a proposed plan tailored to your needs."
-        primaryCta={{ href: "/contact", label: "Get in touch" }}
-      />
-    </div>
+    </Page>
   );
 }

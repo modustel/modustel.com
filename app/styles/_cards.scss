@@ -89,10 +89,8 @@
 }
 
 .card-title {
+  @include heading-sm;
   margin: 0 0 $spacing-md 0;
-  font-size: $font-size-xl;
-  color: $text-primary;
-  font-weight: 600;
   transition: color $transition-base;
 }
 
@@ -105,9 +103,8 @@
 
 .card {
   h3 {
+    @include heading-sm;
     margin: 0 0 $spacing-md 0;
-    font-size: $font-size-xl;
-    color: $text-primary;
   }
 
   p {

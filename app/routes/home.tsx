@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import type { Route } from "./+types/home";
 import { Card } from "../components/ui/Card";
 import { AIPoweredGraphic } from "../components/graphics/AIPoweredGraphic";
@@ -9,6 +8,7 @@ import { ScaleOptimizeGraphic } from "../components/graphics/ScaleOptimizeGraphi
 import { HeroAIGraphic } from "../components/graphics/HeroAIGraphic";
 import { TrustSection } from "../components/sections/TrustSection";
 import { CallToActionSection } from "../components/sections/CallToActionSection";
+import { Page } from "../components/layout/Page";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Modus Tel Labs | AI & Custom Software for Business";
@@ -40,7 +40,16 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <Fragment>
+    <Page
+      footer={
+        <CallToActionSection
+          heading="Ready to transform your operations?"
+          body="Let's explore how AI and custom software can drive real, measurable growth for your business."
+          primaryCta={{ href: "/contact", label: "Schedule a Consultation" }}
+          secondaryCta={{ href: "/about", label: "Learn About Us" }}
+        />
+      }
+    >
       {/* Hero Section */}
       <section>
         <div className="hero animate-fade-in">
@@ -110,14 +119,6 @@ export default function Home() {
           />
         </div>
       </section>
-
-      {/* Call to Action */}
-      <CallToActionSection
-        heading="Ready to transform your operations?"
-        body="Let's explore how AI and custom software can drive real, measurable growth for your business."
-        primaryCta={{ href: "/contact", label: "Schedule a Consultation" }}
-        secondaryCta={{ href: "/about", label: "Learn About Us" }}
-      />
-    </Fragment>
+    </Page>
   );
 }

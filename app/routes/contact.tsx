@@ -1,4 +1,5 @@
 import type { Route } from "./+types/contact";
+import { Page } from "../components/layout/Page";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Contact — Modus Tel Labs";
@@ -34,7 +35,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Contact() {
   return (
-    <div className="prose">
+    <Page prose>
       <div className="animate-fade-in">
         <h1>Contact</h1>
 
@@ -83,8 +84,8 @@ export default function Contact() {
           </label>
 
           <label>
-            Brief
-            <textarea name="message" placeholder="Short description" required></textarea>
+            Project details
+            <textarea name="message" placeholder="What are you looking to build or improve?" required></textarea>
           </label>
 
           <button type="submit" className="btn btn-accent">
@@ -97,7 +98,6 @@ export default function Contact() {
           <a href="mailto:contact@modustel.com">contact@modustel.com</a>.
         </p>
       </div>
-
-    </div>
+    </Page>
   );
 }

@@ -6,17 +6,14 @@
   margin-bottom: $spacing-6xl;
 
   h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    @include heading-xl;
     margin: 0 0 $spacing-lg 0;
-    color: $text-primary;
   }
 
   .lead {
-    font-size: $font-size-lg;
-    color: $text-secondary;
+    @include lead-text;
     max-width: 600px;
     margin: 0 auto;
-    line-height: $line-height-relaxed;
   }
 }
 
@@ -140,9 +137,8 @@
 
 .case-study-header {
   h2 {
-    font-size: $font-size-2xl;
+    @include heading-md;
     margin: 0 0 $spacing-xs 0;
-    color: $text-primary;
   }
 }
 
