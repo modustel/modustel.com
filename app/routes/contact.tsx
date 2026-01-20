@@ -4,28 +4,19 @@ import { Page } from "../components/layout/Page";
 import { PageHeader } from "../components/layout/PageHeader";
 import { ContactHeaderGraphic } from "../components/graphics/ContactHeaderGraphic";
 import { createContact } from "../services/contact.server";
+import { CONTACT_LIMITS } from "../services/contact.shared";
 
 export async function action({ request }: Route.ActionArgs) {
   const formData = await request.formData();
 
-  const name = formData.get("name") as string;
-  const email = formData.get("email") as string;
-  const company = formData.get("company") as string;
-  const budget = formData.get("budget") as string;
-  const timeline = formData.get("timeline") as string;
-  const message = formData.get("message") as string;
-
-  if (!name || !email || !message) {
-    return { success: false, error: "Please fill in all required fields." };
-  }
-
-  try {
-    await createContact({ name, email, company, budget, timeline, message });
-    return { success: true };
-  } catch (error) {
-    console.error("Failed to save contact:", error);
-    return { success: false, error: "Something went wrong. Please try again." };
-  }
+  return createContact({
+    name: formData.get("name") as string,
+    email: formData.get("email") as string,
+    company: formData.get("company") as string,
+    budget: formData.get("budget") as string,
+    timeline: formData.get("timeline") as string,
+    message: formData.get("message") as string,
+  });
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -89,17 +80,17 @@ export default function Contact() {
 
             <label>
               Name
-              <input name="name" type="text" placeholder="Your name" required />
+              <input name="name" type="text" placeholder="Your name" required maxLength={CONTACT_LIMITS.name} />
             </label>
 
             <label>
               Email
-              <input name="email" type="email" placeholder="you@example.com" required />
+              <input name="email" type="email" placeholder="you@example.com" required maxLength={CONTACT_LIMITS.email} />
             </label>
 
             <label>
               Company / Team
-              <input name="company" type="text" placeholder="Company name" />
+              <input name="company" type="text" placeholder="Company name" maxLength={CONTACT_LIMITS.company} />
             </label>
 
             <label>
@@ -115,12 +106,12 @@ export default function Contact() {
 
             <label>
               Timeline
-              <input name="timeline" type="text" placeholder="Ideal launch date" />
+              <input name="timeline" type="text" placeholder="Ideal launch date" maxLength={CONTACT_LIMITS.timeline} />
             </label>
 
             <label>
               Project details
-              <textarea name="message" placeholder="What are you looking to build or improve?" required></textarea>
+              <textarea name="message" placeholder="What are you looking to build or improve?" required maxLength={CONTACT_LIMITS.message} />
             </label>
 
             <button type="submit" className="btn btn-accent" disabled={isSubmitting}>
