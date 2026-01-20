@@ -6,6 +6,17 @@ form {
   gap: $spacing-lg;
 }
 
+// Honeypot field - visually hidden but accessible to bots
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
 label {
   display: grid;
   gap: $spacing-xs;

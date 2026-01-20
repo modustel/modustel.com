@@ -6,9 +6,21 @@ import { ContactHeaderGraphic } from "../components/graphics/ContactHeaderGraphi
 import { FormField } from "../components/forms/FormField";
 import { createContact } from "../services/contact.server";
 import { CONTACT_LIMITS } from "../services/contact.shared";
+import { checkRateLimit, isHoneypotFilled } from "../services/spam.server";
 
 export async function action({ request }: Route.ActionArgs) {
   const formData = await request.formData();
+
+  // Check honeypot - if filled, silently "succeed" (don't tell bots they failed)
+  if (isHoneypotFilled(formData.get("website") as string)) {
+    return { success: true };
+  }
+
+  // Rate limit by IP
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
+  if (!checkRateLimit(ip)) {
+    return { success: false, error: "Too many submissions. Please try again later." };
+  }
 
   return createContact({
     name: formData.get("name") as string,
@@ -78,6 +90,16 @@ export default function Contact() {
             {actionData?.error && (
               <p className="error-message">{actionData.error}</p>
             )}
+
+            {/* Honeypot field - hidden from users, bots will fill it */}
+            <input
+              type="text"
+              name="website"
+              autoComplete="off"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="honeypot"
+            />
 
             <FormField
               label="Name"
