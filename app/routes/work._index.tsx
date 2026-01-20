@@ -1,4 +1,4 @@
-import type { Route } from "./+types/work";
+import type { Route } from "./+types/work._index";
 import { CallToActionSection } from "../components/sections/CallToActionSection";
 import { Page } from "../components/layout/Page";
 import { PageHeader } from "../components/layout/PageHeader";
