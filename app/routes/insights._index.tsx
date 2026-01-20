@@ -1,4 +1,7 @@
 import type { Route } from "./+types/insights";
+import { Page } from "../components/layout/Page";
+import { PageHeader } from "../components/layout/PageHeader";
+import { InsightsHeaderGraphic } from "../components/graphics/InsightsHeaderGraphic";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Insights — Modus Tel Labs";
@@ -32,30 +35,56 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+const insights = [
+  {
+    slug: "introducing-our-approach",
+    title: "Introducing Our Approach to AI & Automation",
+    description:
+      "How we think about building AI solutions and automation systems that drive real business outcomes.",
+    date: "January 15, 2025",
+  },
+  {
+    slug: "designing-for-edge-cases",
+    title: "Designing for Edge Cases",
+    description:
+      "Why the hardest 10% of cases often determine whether an automation system succeeds or fails.",
+    date: "January 14, 2025",
+  },
+];
+
 export default function InsightsIndex() {
   return (
-    <div className="prose">
-      <div className="animate-fade-in">
-        <h1>Insights</h1>
-        <p>
-          Short essays on patterns, lessons learned, and practical approaches to
-          operational automation.
-        </p>
+    <Page>
+      <PageHeader
+        title="Insights"
+        description="Short essays on patterns, lessons learned, and practical approaches to operational automation."
+        graphic={<InsightsHeaderGraphic />}
+        graphicPosition="right"
+      />
+
+      <div className="insights-grid stagger-animation">
+        {insights.map((insight) => (
+          <a
+            key={insight.slug}
+            href={`/insights/${insight.slug}`}
+            className="insight-card"
+          >
+            <div className="insight-card-meta">{insight.date}</div>
+            <h2 className="insight-card-title">
+              {insight.title}
+              <span className="insight-card-arrow">&rarr;</span>
+            </h2>
+            <p className="insight-card-description">{insight.description}</p>
+          </a>
+        ))}
       </div>
 
-      <ul className="stagger-animation">
-        <li>
-          <a href="/insights/introducing-our-approach">Introducing our approach</a>
-        </li>
-        <li>
-          <a href="/insights/designing-for-edge-cases">Designing for edge cases</a>
-        </li>
-      </ul>
-
-      <p>
-        Want more detail on a topic? <a href="/contact">Get in touch</a> and we'll
-        share relevant notes.
-      </p>
-    </div>
+      <footer className="insights-footer">
+        <p>
+          Want more detail on a topic? <a href="/contact">Get in touch</a> and
+          we'll share relevant notes.
+        </p>
+      </footer>
+    </Page>
   );
 }

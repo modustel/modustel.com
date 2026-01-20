@@ -1,4 +1,7 @@
 import type { Route } from "./+types/contact";
+import { Page } from "../components/layout/Page";
+import { PageHeader } from "../components/layout/PageHeader";
+import { ContactHeaderGraphic } from "../components/graphics/ContactHeaderGraphic";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Contact — Modus Tel Labs";
@@ -34,20 +37,18 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Contact() {
   return (
-    <div className="prose">
-      <div className="animate-fade-in">
-        <h1>Contact</h1>
-
-        <p>
-          Tell us about the workflow, the bottlenecks, and the outcome you want. We
-          reply within two business days with next steps and timing.
-        </p>
-      </div>
+    <Page prose>
+      <PageHeader
+        title="Contact"
+        description="Tell us about the workflow, the bottlenecks, and the outcome you want. We reply within two business days with next steps and timing."
+        graphic={<ContactHeaderGraphic />}
+        graphicPosition="left"
+      />
 
       <div className="card stagger-animation">
         <h2>Get in touch</h2>
         <form
-          action="mailto:hello@modustel.com"
+          action="mailto:contact@modustel.com"
           method="post"
           encType="text/plain"
         >
@@ -83,8 +84,8 @@ export default function Contact() {
           </label>
 
           <label>
-            Brief
-            <textarea name="message" placeholder="Short description" required></textarea>
+            Project details
+            <textarea name="message" placeholder="What are you looking to build or improve?" required></textarea>
           </label>
 
           <button type="submit" className="btn btn-accent">
@@ -94,10 +95,9 @@ export default function Contact() {
 
         <p className="muted">
           Prefer email? Reach us at{" "}
-          <a href="mailto:hello@modustel.com">hello@modustel.com</a>.
+          <a href="mailto:contact@modustel.com">contact@modustel.com</a>.
         </p>
       </div>
-
-    </div>
+    </Page>
   );
 }

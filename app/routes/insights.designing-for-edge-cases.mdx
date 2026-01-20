@@ -5,7 +5,20 @@ date: 2025-01-14
 author: Modus Tel Labs
 ---
 
-# Designing for Edge Cases in AI & Automation
+import { ArticleLayout } from "../components/layout/ArticleLayout";
+
+export default function Layout({ children }) {
+  return (
+    <ArticleLayout
+      title={frontmatter.title}
+      description={frontmatter.description}
+      date={frontmatter.date}
+      author={frontmatter.author}
+    >
+      {children}
+    </ArticleLayout>
+  );
+}
 
 One of the biggest differences between a proof-of-concept and a production system is how it handles edge cases.
 

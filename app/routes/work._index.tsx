@@ -1,5 +1,8 @@
 import type { Route } from "./+types/work";
 import { CallToActionSection } from "../components/sections/CallToActionSection";
+import { Page } from "../components/layout/Page";
+import { PageHeader } from "../components/layout/PageHeader";
+import { WorkHeaderGraphic } from "../components/graphics/WorkHeaderGraphic";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Work — Modus Tel Labs";
@@ -68,14 +71,22 @@ const caseStudies = [
 
 export default function WorkIndex() {
   return (
-    <div className="container">
-      <div className="work-hero animate-fade-in">
-        <h1>Work</h1>
-        <p className="lead">
-          Real outcomes from real engagements. Each case study shows what we
-          shipped and the measurable impact—without exposing client details.
-        </p>
-      </div>
+    <Page
+      footer={
+        <CallToActionSection
+          heading="Want similar results?"
+          body="Tell us about your workflow challenges and we'll show you what's possible."
+          primaryCta={{ href: "/contact", label: "Start a conversation" }}
+          secondaryCta={{ href: "/services", label: "View services" }}
+        />
+      }
+    >
+      <PageHeader
+        title="Work"
+        description="Real outcomes from real engagements. Each case study shows what we shipped and the measurable impact—without exposing client details."
+        graphic={<WorkHeaderGraphic />}
+        graphicPosition="left"
+      />
 
       <div className="case-studies">
         {caseStudies.map((study, index) => (
@@ -113,13 +124,6 @@ export default function WorkIndex() {
           </article>
         ))}
       </div>
-
-      <CallToActionSection
-        heading="Want similar results?"
-        body="Tell us about your workflow challenges and we'll show you what's possible."
-        primaryCta={{ href: "/contact", label: "Start a conversation" }}
-        secondaryCta={{ href: "/services", label: "View services" }}
-      />
-    </div>
+    </Page>
   );
 }

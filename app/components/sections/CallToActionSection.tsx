@@ -8,7 +8,6 @@ type CallToActionSectionProps = {
   body: string;
   primaryCta: CallToActionLink;
   secondaryCta?: CallToActionLink;
-  as?: "section" | "div";
 };
 
 export function CallToActionSection({
@@ -16,26 +15,21 @@ export function CallToActionSection({
   body,
   primaryCta,
   secondaryCta,
-  as = "section",
 }: CallToActionSectionProps) {
-  const Wrapper = as;
-
   return (
-    <Wrapper>
-      <div className="cta-section-epic animate-fade-in">
-        <h2>{heading}</h2>
-        <p>{body}</p>
-        <div className="cta-group">
-          <a href={primaryCta.href} className="btn btn-accent btn-large">
-            {primaryCta.label}
+    <section className="cta-section-epic animate-fade-in">
+      <h2>{heading}</h2>
+      <p>{body}</p>
+      <div className="cta-group">
+        <a href={primaryCta.href} className="btn btn-accent btn-large">
+          {primaryCta.label}
+        </a>
+        {secondaryCta ? (
+          <a href={secondaryCta.href} className="btn btn-secondary btn-large">
+            {secondaryCta.label}
           </a>
-          {secondaryCta ? (
-            <a href={secondaryCta.href} className="btn btn-secondary btn-large">
-              {secondaryCta.label}
-            </a>
-          ) : null}
-        </div>
+        ) : null}
       </div>
-    </Wrapper>
+    </section>
   );
 }
