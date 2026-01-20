@@ -1,5 +1,7 @@
 import type { Route } from "./+types/contact";
 import { Page } from "../components/layout/Page";
+import { PageHeader } from "../components/layout/PageHeader";
+import { ContactHeaderGraphic } from "../components/graphics/ContactHeaderGraphic";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Contact — Modus Tel Labs";
@@ -36,14 +38,12 @@ export function meta({}: Route.MetaArgs) {
 export default function Contact() {
   return (
     <Page prose>
-      <div className="animate-fade-in">
-        <h1>Contact</h1>
-
-        <p>
-          Tell us about the workflow, the bottlenecks, and the outcome you want. We
-          reply within two business days with next steps and timing.
-        </p>
-      </div>
+      <PageHeader
+        title="Contact"
+        description="Tell us about the workflow, the bottlenecks, and the outcome you want. We reply within two business days with next steps and timing."
+        graphic={<ContactHeaderGraphic />}
+        graphicPosition="left"
+      />
 
       <div className="card stagger-animation">
         <h2>Get in touch</h2>

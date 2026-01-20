@@ -1,22 +1,6 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-.work-hero {
-  text-align: center;
-  margin-bottom: $spacing-6xl;
-
-  h1 {
-    @include heading-xl;
-    margin: 0 0 $spacing-lg 0;
-  }
-
-  .lead {
-    @include lead-text;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-}
-
 .case-studies {
   @include flex-column;
   gap: $spacing-4xl;

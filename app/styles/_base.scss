@@ -73,3 +73,86 @@ section {
     }
   }
 }
+
+// ========== PAGE HEADER ==========
+.page-header {
+  margin-bottom: $spacing-4xl;
+
+  h1 {
+    @include heading-lg;
+    margin: 0 0 $spacing-md 0;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $text-secondary;
+    line-height: $line-height-relaxed;
+    margin: 0;
+  }
+
+  @include mobile {
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.page-header-with-graphic {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: $spacing-3xl;
+
+  &.graphic-left {
+    grid-template-columns: auto 1fr;
+
+    .page-header-graphic {
+      order: -1;
+    }
+  }
+
+  .page-header-content {
+    h1 {
+      @include heading-lg;
+      margin: 0 0 $spacing-md 0;
+    }
+
+    p {
+      font-size: $font-size-lg;
+      color: $text-secondary;
+      line-height: $line-height-relaxed;
+      margin: 0;
+    }
+  }
+
+  .page-header-graphic {
+    width: 200px;
+    height: 150px;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+
+    &.graphic-left .page-header-graphic {
+      order: 0;
+    }
+
+    .page-header-graphic {
+      width: 180px;
+      height: 130px;
+      justify-self: start;
+    }
+  }
+
+  @include mobile {
+    .page-header-graphic {
+      width: 150px;
+      height: 110px;
+    }
+  }
+}

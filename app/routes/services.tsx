@@ -13,6 +13,8 @@ import { HardenGraphic } from "../components/graphics/HardenGraphic";
 import { HandoffGraphic } from "../components/graphics/HandoffGraphic";
 import { CallToActionSection } from "../components/sections/CallToActionSection";
 import { Page } from "../components/layout/Page";
+import { PageHeader } from "../components/layout/PageHeader";
+import { ServicesHeaderGraphic } from "../components/graphics/ServicesHeaderGraphic";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Services — Modus Tel Labs";
@@ -58,13 +60,12 @@ export default function Services() {
         />
       }
     >
-      <div className="animate-fade-in">
-        <h1>Services</h1>
-        <p>
-          We package outcomes, not hours. Each engagement is designed to ship a
-          usable system quickly and then harden it for long-term use.
-        </p>
-      </div>
+      <PageHeader
+        title="Services"
+        description="We package outcomes, not hours. Each engagement is designed to ship a usable system quickly and then harden it for long-term use."
+        graphic={<ServicesHeaderGraphic />}
+        graphicPosition="right"
+      />
 
       <section>
         <h2 className="section-title animate-fade-in">Service packages</h2>

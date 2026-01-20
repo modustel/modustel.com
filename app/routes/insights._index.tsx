@@ -1,4 +1,7 @@
 import type { Route } from "./+types/insights";
+import { Page } from "../components/layout/Page";
+import { PageHeader } from "../components/layout/PageHeader";
+import { InsightsHeaderGraphic } from "../components/graphics/InsightsHeaderGraphic";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Insights — Modus Tel Labs";
@@ -51,14 +54,13 @@ const insights = [
 
 export default function InsightsIndex() {
   return (
-    <div className="article animate-fade-in">
-      <header className="insights-header">
-        <h1 className="insights-title">Insights</h1>
-        <p className="insights-description">
-          Short essays on patterns, lessons learned, and practical approaches to
-          operational automation.
-        </p>
-      </header>
+    <Page>
+      <PageHeader
+        title="Insights"
+        description="Short essays on patterns, lessons learned, and practical approaches to operational automation."
+        graphic={<InsightsHeaderGraphic />}
+        graphicPosition="right"
+      />
 
       <div className="insights-grid stagger-animation">
         {insights.map((insight) => (
@@ -83,6 +85,6 @@ export default function InsightsIndex() {
           we'll share relevant notes.
         </p>
       </footer>
-    </div>
+    </Page>
   );
 }
