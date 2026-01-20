@@ -3,6 +3,7 @@ import type { Route } from "./+types/contact";
 import { Page } from "../components/layout/Page";
 import { PageHeader } from "../components/layout/PageHeader";
 import { ContactHeaderGraphic } from "../components/graphics/ContactHeaderGraphic";
+import { FormField } from "../components/forms/FormField";
 import { createContact } from "../services/contact.server";
 import { CONTACT_LIMITS } from "../services/contact.shared";
 
@@ -78,20 +79,29 @@ export default function Contact() {
               <p className="error-message">{actionData.error}</p>
             )}
 
-            <label>
-              Name
-              <input name="name" type="text" placeholder="Your name" required maxLength={CONTACT_LIMITS.name} />
-            </label>
+            <FormField
+              label="Name"
+              name="name"
+              placeholder="Your name"
+              required
+              maxLength={CONTACT_LIMITS.name}
+            />
 
-            <label>
-              Email
-              <input name="email" type="email" placeholder="you@example.com" required maxLength={CONTACT_LIMITS.email} />
-            </label>
+            <FormField
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              maxLength={CONTACT_LIMITS.email}
+            />
 
-            <label>
-              Company / Team
-              <input name="company" type="text" placeholder="Company name" maxLength={CONTACT_LIMITS.company} />
-            </label>
+            <FormField
+              label="Company / Team"
+              name="company"
+              placeholder="Company name"
+              maxLength={CONTACT_LIMITS.company}
+            />
 
             <label>
               Budget range (optional)
@@ -104,15 +114,22 @@ export default function Contact() {
               </select>
             </label>
 
-            <label>
-              Timeline
-              <input name="timeline" type="text" placeholder="Ideal launch date" maxLength={CONTACT_LIMITS.timeline} />
-            </label>
+            <FormField
+              label="Timeline"
+              name="timeline"
+              placeholder="Ideal launch date"
+              maxLength={CONTACT_LIMITS.timeline}
+            />
 
-            <label>
-              Project details
-              <textarea name="message" placeholder="What are you looking to build or improve?" required maxLength={CONTACT_LIMITS.message} />
-            </label>
+            <FormField
+              label="Project details"
+              name="message"
+              type="textarea"
+              placeholder="What are you looking to build or improve?"
+              required
+              maxLength={CONTACT_LIMITS.message}
+              showCounter
+            />
 
             <button type="submit" className="btn btn-accent" disabled={isSubmitting}>
               {isSubmitting ? "Sending..." : "Get in touch"}
