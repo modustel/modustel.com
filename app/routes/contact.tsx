@@ -1,4 +1,5 @@
 import { Form, useActionData, useNavigation } from "react-router";
+import { Turnstile } from "@marsidev/react-turnstile";
 import type { Route } from "./+types/contact";
 import { Page } from "../components/layout/Page";
 import { PageHeader } from "../components/layout/PageHeader";
@@ -6,7 +7,13 @@ import { ContactHeaderGraphic } from "../components/graphics/ContactHeaderGraphi
 import { FormField } from "../components/forms/FormField";
 import { createContact } from "../services/contact.server";
 import { CONTACT_LIMITS } from "../services/contact.shared";
-import { checkRateLimit, isHoneypotFilled } from "../services/spam.server";
+import {
+  checkRateLimit,
+  isHoneypotFilled,
+  verifyTurnstile,
+} from "../services/spam.server";
+
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
 export async function action({ request }: Route.ActionArgs) {
   const formData = await request.formData();
@@ -14,6 +21,13 @@ export async function action({ request }: Route.ActionArgs) {
   // Check honeypot - if filled, silently "succeed" (don't tell bots they failed)
   if (isHoneypotFilled(formData.get("website") as string)) {
     return { success: true };
+  }
+
+  // Verify Turnstile token
+  const turnstileToken = formData.get("cf-turnstile-response") as string;
+  const turnstileValid = await verifyTurnstile(turnstileToken);
+  if (!turnstileValid) {
+    return { success: false, error: "Please complete the security check." };
   }
 
   // Rate limit by IP
@@ -152,6 +166,10 @@ export default function Contact() {
               maxLength={CONTACT_LIMITS.message}
               showCounter
             />
+
+            {TURNSTILE_SITE_KEY && (
+              <Turnstile siteKey={TURNSTILE_SITE_KEY} />
+            )}
 
             <button type="submit" className="btn btn-accent" disabled={isSubmitting}>
               {isSubmitting ? "Sending..." : "Get in touch"}
