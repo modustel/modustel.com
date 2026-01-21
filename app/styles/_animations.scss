@@ -95,6 +95,23 @@
   }
 }
 
+@keyframes meteor {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300px) translateY(150px);
+    opacity: 0;
+  }
+}
+
 // ========== ANIMATION CLASSES ==========
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out;
@@ -135,6 +152,18 @@
 
 .animate-draw {
   animation: draw 1.5s ease-out forwards;
+}
+
+.animate-meteor {
+  animation: meteor 4s linear infinite;
+}
+
+.animate-meteor-slow {
+  animation: meteor 6s linear infinite;
+}
+
+.animate-meteor-fast {
+  animation: meteor 3s linear infinite;
 }
 
 // ========== STAGGERED ANIMATIONS ==========

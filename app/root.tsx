@@ -1,5 +1,6 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -10,6 +11,7 @@ import {
 import type { Route } from "./+types/root";
 import "./styles/app.scss";
 import { SiteLayout } from "./components/layout/SiteLayout";
+import { Mars404Graphic } from "./components/graphics/Mars404Graphic";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -48,30 +50,55 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  const is404 = isRouteErrorResponse(error) && error.status === 404;
+
+  if (is404) {
+    return (
+      <div className="error-page error-page-404">
+        <div className="error-graphic">
+          <Mars404Graphic />
+        </div>
+        <div className="error-content">
+          <h1>Lost in space</h1>
+          <p>
+            The page you're looking for has drifted off into the Martian dust.
+            Let's get you back on course.
+          </p>
+          <Link to="/" className="btn btn-accent">
+            Return to Earth
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // Non-404 errors
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
+    message = `Error ${error.status}`;
+    details = error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <div className="error-page">
+      <div className="error-content">
+        <h1>{message}</h1>
+        <p>{details}</p>
+        {stack && (
+          <pre className="error-stack">
+            <code>{stack}</code>
+          </pre>
+        )}
+        <Link to="/" className="btn btn-accent">
+          Go home
+        </Link>
+      </div>
+    </div>
   );
 }
