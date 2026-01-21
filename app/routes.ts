@@ -11,4 +11,5 @@ export default [
   route("insights/:slug", "routes/insights.$slug.mdx"),
   route("about", "routes/about.tsx"),
   route("contact", "routes/contact.tsx"),
+  route("privacy", "routes/privacy.tsx"),
 ] satisfies RouteConfig;
