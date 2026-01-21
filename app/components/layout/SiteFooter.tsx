@@ -11,6 +11,9 @@ export function SiteFooter() {
           <Link to="/privacy" className="footer-link">
             Privacy Policy
           </Link>
+          <Link to="/terms" className="footer-link">
+            Terms of Service
+          </Link>
         </nav>
       </div>
     </footer>
