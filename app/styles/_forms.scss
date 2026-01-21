@@ -6,6 +6,17 @@ form {
   gap: $spacing-lg;
 }
 
+// Honeypot field - visually hidden but accessible to bots
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
 label {
   display: grid;
   gap: $spacing-xs;
@@ -48,5 +59,58 @@ form button[type="submit"] {
   &:hover {
     background: $accent-dark;
     border-color: $accent-dark;
+  }
+}
+
+// Form field component styles
+.form-field {
+  display: grid;
+  gap: $spacing-xs;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2xs;
+  }
+
+  .required-marker {
+    color: $accent;
+  }
+
+  .field-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 1.25rem;
+    font-size: $font-size-xs;
+  }
+
+  .field-error-message {
+    color: #dc2626;
+  }
+
+  .char-counter {
+    margin-left: auto;
+    color: $text-tertiary;
+    transition: color $transition-fast;
+
+    &.near-limit {
+      color: $accent;
+    }
+
+    &.at-limit {
+      color: #dc2626;
+      font-weight: 500;
+    }
+  }
+
+  input.field-error,
+  textarea.field-error {
+    border-color: #dc2626;
+
+    &:focus {
+      outline-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
   }
 }

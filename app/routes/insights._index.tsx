@@ -1,4 +1,4 @@
-import type { Route } from "./+types/insights";
+import type { Route } from "./+types/insights._index";
 import { Page } from "../components/layout/Page";
 import { PageHeader } from "../components/layout/PageHeader";
 import { InsightsHeaderGraphic } from "../components/graphics/InsightsHeaderGraphic";

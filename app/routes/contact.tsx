@@ -1,7 +1,50 @@
+import { Form, useActionData, useNavigation } from "react-router";
+import { Turnstile } from "@marsidev/react-turnstile";
 import type { Route } from "./+types/contact";
 import { Page } from "../components/layout/Page";
 import { PageHeader } from "../components/layout/PageHeader";
 import { ContactHeaderGraphic } from "../components/graphics/ContactHeaderGraphic";
+import { FormField } from "../components/forms/FormField";
+import { createContact } from "../services/contact.server";
+import { CONTACT_LIMITS } from "../services/contact.shared";
+import {
+  checkRateLimit,
+  isHoneypotFilled,
+  verifyTurnstile,
+} from "../services/spam.server";
+
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY;
+
+export async function action({ request }: Route.ActionArgs) {
+  const formData = await request.formData();
+
+  // Check honeypot - if filled, silently "succeed" (don't tell bots they failed)
+  if (isHoneypotFilled(formData.get("website") as string)) {
+    return { success: true };
+  }
+
+  // Verify Turnstile token
+  const turnstileToken = formData.get("cf-turnstile-response") as string;
+  const turnstileValid = await verifyTurnstile(turnstileToken);
+  if (!turnstileValid) {
+    return { success: false, error: "Please complete the security check." };
+  }
+
+  // Rate limit by IP
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
+  if (!checkRateLimit(ip)) {
+    return { success: false, error: "Too many submissions. Please try again later." };
+  }
+
+  return createContact({
+    name: formData.get("name") as string,
+    email: formData.get("email") as string,
+    company: formData.get("company") as string,
+    budget: formData.get("budget") as string,
+    timeline: formData.get("timeline") as string,
+    message: formData.get("message") as string,
+  });
+}
 
 export function meta({}: Route.MetaArgs) {
   const title = "Contact — Modus Tel Labs";
@@ -36,6 +79,10 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Contact() {
+  const actionData = useActionData<typeof action>();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
   return (
     <Page prose>
       <PageHeader
@@ -47,51 +94,88 @@ export default function Contact() {
 
       <div className="card stagger-animation">
         <h2>Get in touch</h2>
-        <form
-          action="mailto:contact@modustel.com"
-          method="post"
-          encType="text/plain"
-        >
-          <label>
-            Name
-            <input name="name" type="text" placeholder="Your name" required />
-          </label>
 
-          <label>
-            Email
-            <input name="email" type="email" placeholder="you@example.com" required />
-          </label>
+        {actionData?.success ? (
+          <p className="success-message">
+            Thanks for reaching out! We'll get back to you within two business days.
+          </p>
+        ) : (
+          <Form method="post">
+            {actionData?.error && (
+              <p className="error-message">{actionData.error}</p>
+            )}
 
-          <label>
-            Company / Team
-            <input name="company" type="text" placeholder="Company name" />
-          </label>
+            {/* Honeypot field - hidden from users, bots will fill it */}
+            <input
+              type="text"
+              name="website"
+              autoComplete="off"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="honeypot"
+            />
 
-          <label>
-            Budget range (optional)
-            <select name="budget">
-              <option value="">Select a range</option>
-              <option value="under-25k">Under $25k</option>
-              <option value="25-50k">$25k–$50k</option>
-              <option value="50-100k">$50k–$100k</option>
-              <option value="100k-plus">$100k+</option>
-            </select>
-          </label>
+            <FormField
+              label="Name"
+              name="name"
+              placeholder="Your name"
+              required
+              maxLength={CONTACT_LIMITS.name}
+            />
 
-          <label>
-            Timeline
-            <input name="timeline" type="text" placeholder="Ideal launch date" />
-          </label>
+            <FormField
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              maxLength={CONTACT_LIMITS.email}
+            />
 
-          <label>
-            Project details
-            <textarea name="message" placeholder="What are you looking to build or improve?" required></textarea>
-          </label>
+            <FormField
+              label="Company / Team"
+              name="company"
+              placeholder="Company name"
+              maxLength={CONTACT_LIMITS.company}
+            />
 
-          <button type="submit" className="btn btn-accent">
-            Get in touch
-          </button>
-        </form>
+            <label>
+              Budget range (optional)
+              <select name="budget">
+                <option value="">Select a range</option>
+                <option value="under-25k">Under $25k</option>
+                <option value="25-50k">$25k–$50k</option>
+                <option value="50-100k">$50k–$100k</option>
+                <option value="100k-plus">$100k+</option>
+              </select>
+            </label>
+
+            <FormField
+              label="Timeline"
+              name="timeline"
+              placeholder="Ideal launch date"
+              maxLength={CONTACT_LIMITS.timeline}
+            />
+
+            <FormField
+              label="Project details"
+              name="message"
+              type="textarea"
+              placeholder="What are you looking to build or improve?"
+              required
+              maxLength={CONTACT_LIMITS.message}
+              showCounter
+            />
+
+            {TURNSTILE_SITE_KEY && (
+              <Turnstile siteKey={TURNSTILE_SITE_KEY} />
+            )}
+
+            <button type="submit" className="btn btn-accent" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Get in touch"}
+            </button>
+          </Form>
+        )}
 
         <p className="muted">
           Prefer email? Reach us at{" "}
