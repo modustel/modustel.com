@@ -98,7 +98,6 @@ function SuccessAnimation() {
             <path d="M4 12l6 6L20 6" />
           </svg>
         </div>
-        <div className="success-shimmer" />
         <div className="success-particles">
           {[...Array(12)].map((_, i) => (
             <div key={i} className="particle" />

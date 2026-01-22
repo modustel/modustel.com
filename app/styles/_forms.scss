@@ -1,5 +1,7 @@
 @use "variables" as *;
 @use "mixins" as *;
+@use "sass:list";
+@use "sass:math";
 
 form {
   display: grid;
@@ -240,10 +242,10 @@ form button[type="submit"] {
   @for $i from 1 through 12 {
     &:nth-child(#{$i}) {
       $angle: ($i - 1) * 30deg;
-      $distance: 80px + random(40) * 1px;
+      $distance: 80px + math.random(40) * 1px;
       --tx: #{cos($angle) * $distance};
       --ty: #{sin($angle) * $distance};
-      background: nth(($accent, $accent-light, $accent-dark, $accent, $accent-light, $accent-dark, $accent, $accent-light, $accent-dark, $accent, $accent-light, $accent-dark), $i);
+      background: list.nth(($accent, $accent-light, $accent-dark, $accent, $accent-light, $accent-dark, $accent, $accent-light, $accent-dark, $accent, $accent-light, $accent-dark), $i);
       animation-delay: #{0.2 + ($i * 0.03)}s;
     }
   }
@@ -265,20 +267,6 @@ form button[type="submit"] {
   line-height: $line-height-relaxed;
   animation: fadeIn 0.5s 0.5s ease-out forwards;
   opacity: 0;
-}
-
-.success-shimmer {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba($accent, 0.2),
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s 0.8s ease-in-out infinite;
 }
 
 // Submitting state animation
