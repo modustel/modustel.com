@@ -57,3 +57,63 @@
     margin-bottom: $spacing-2xl;
   }
 }
+
+// Value proposition section (for new companies without stats)
+.value-proposition-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-3xl;
+  width: 100%;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: $spacing-2xl;
+  }
+}
+
+.value-proposition-item {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-lg;
+  padding: $spacing-lg;
+
+  @include tablet {
+    justify-content: center;
+    text-align: left;
+  }
+}
+
+.value-proposition-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba($accent, 0.1) 0%, rgba($accent-light, 0.05) 100%);
+  border-radius: $radius-md;
+  color: $accent;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.value-proposition-content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.value-proposition-title {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.value-proposition-description {
+  font-size: $font-size-base;
+  color: $text-secondary;
+  line-height: $line-height-relaxed;
+}

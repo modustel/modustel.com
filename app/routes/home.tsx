@@ -6,7 +6,7 @@ import { MeasurableResultsGraphic } from "../components/graphics/MeasurableResul
 import { CustomDevelopmentGraphic } from "../components/graphics/CustomDevelopmentGraphic";
 import { ScaleOptimizeGraphic } from "../components/graphics/ScaleOptimizeGraphic";
 import { HeroAIGraphic } from "../components/graphics/HeroAIGraphic";
-import { TrustSection } from "../components/sections/TrustSection";
+import { ValuePropositionSection } from "../components/sections/ValuePropositionSection";
 import { CallToActionSection } from "../components/sections/CallToActionSection";
 import { Page } from "../components/layout/Page";
 
@@ -73,8 +73,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Section */}
-      <TrustSection />
+      {/* Value Proposition Section */}
+      <ValuePropositionSection />
 
       {/* Features Section */}
       <section>
