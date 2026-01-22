@@ -1,6 +1,5 @@
 import { Form, useActionData, useNavigation, redirect } from "react-router";
 import type { Route } from "./+types/admin.login";
-import { Page } from "../components/layout/Page";
 import {
   authenticateAdmin,
   createSession,
@@ -61,9 +60,8 @@ export default function AdminLogin() {
   const isSubmitting = navigation.state === "submitting";
 
   return (
-    <Page>
-      <div className="admin-login-page">
-        <div className="admin-login-container">
+    <div className="admin-page admin-login-page">
+      <div className="admin-login-container">
           <h1>Admin Login</h1>
 
           <Form method="post" className="admin-login-form">
@@ -97,7 +95,6 @@ export default function AdminLogin() {
             </button>
           </Form>
         </div>
-      </div>
-    </Page>
+    </div>
   );
 }

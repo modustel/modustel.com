@@ -91,11 +91,13 @@ export async function requireAdmin(request: Request) {
 
 export function createSessionCookie(sessionId: string): string {
   const expires = new Date(Date.now() + SESSION_DURATION_MS);
-  return `${SESSION_COOKIE_NAME}=${sessionId}; Path=/; HttpOnly; SameSite=Lax; Expires=${expires.toUTCString()}`;
+  const secure = process.env.NODE_ENV === "production" ? "Secure; " : "";
+  return `${SESSION_COOKIE_NAME}=${sessionId}; Path=/; HttpOnly; ${secure}SameSite=Lax; Expires=${expires.toUTCString()}`;
 }
 
 export function createLogoutCookie(): string {
-  return `${SESSION_COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+  const secure = process.env.NODE_ENV === "production" ? "Secure; " : "";
+  return `${SESSION_COOKIE_NAME}=; Path=/; HttpOnly; ${secure}SameSite=Lax; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 }
 
 export async function authenticateAdmin(email: string, password: string) {

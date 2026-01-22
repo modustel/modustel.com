@@ -1,6 +1,5 @@
 import { Link, useLoaderData } from "react-router";
 import type { Route } from "./+types/admin.contacts.$id";
-import { Page } from "../components/layout/Page";
 import { requireAdmin } from "../services/auth.server";
 import { getContactById } from "../services/contact.server";
 
@@ -54,9 +53,8 @@ export default function ContactDetail() {
   const { contact } = useLoaderData<typeof loader>();
 
   return (
-    <Page>
-      <div className="admin-dashboard">
-        <header className="admin-header">
+    <div className="admin-page">
+      <header className="admin-header">
           <div className="admin-header-back">
             <Link to="/admin" className="admin-back-link">
               &larr; Back to Dashboard
@@ -126,7 +124,6 @@ export default function ContactDetail() {
             </footer>
           </article>
         </main>
-      </div>
-    </Page>
+    </div>
   );
 }

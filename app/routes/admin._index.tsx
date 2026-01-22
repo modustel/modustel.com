@@ -1,6 +1,5 @@
 import { Form, Link, useLoaderData, useSearchParams } from "react-router";
 import type { Route } from "./+types/admin._index";
-import { Page } from "../components/layout/Page";
 import { requireAdmin } from "../services/auth.server";
 import { getContacts } from "../services/contact.server";
 
@@ -60,9 +59,8 @@ export default function AdminDashboard() {
   };
 
   return (
-    <Page>
-      <div className="admin-dashboard">
-        <header className="admin-header">
+    <div className="admin-page">
+      <header className="admin-header">
           <h1>Admin Dashboard</h1>
           <div className="admin-header-actions">
             <span className="admin-user">{admin.email}</span>
@@ -148,7 +146,6 @@ export default function AdminDashboard() {
             )}
           </section>
         </main>
-      </div>
-    </Page>
+    </div>
   );
 }
