@@ -1,5 +1,6 @@
 import { Form, useActionData, useNavigation } from "react-router";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { useState, useEffect } from "react";
 import type { Route } from "./+types/contact";
 import { Page } from "../components/layout/Page";
 import { PageHeader } from "../components/layout/PageHeader";
@@ -78,10 +79,55 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+function SuccessAnimation() {
+  return (
+    <div className="success-container">
+      <div className="success-icon-wrapper">
+        <div className="success-rings">
+          <div className="ring" />
+          <div className="ring" />
+          <div className="ring" />
+        </div>
+        <div className="success-circle">
+          <svg viewBox="0 0 52 52">
+            <circle cx="26" cy="26" r="25" />
+          </svg>
+        </div>
+        <div className="success-checkmark">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 12l6 6L20 6" />
+          </svg>
+        </div>
+        <div className="success-particles">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="particle" />
+          ))}
+        </div>
+      </div>
+      <h3 className="success-title">Message Sent!</h3>
+      <p className="success-description">
+        Thanks for reaching out! We'll get back to you within two business days.
+      </p>
+    </div>
+  );
+}
+
 export default function Contact() {
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [formExiting, setFormExiting] = useState(false);
+
+  useEffect(() => {
+    if (actionData?.success) {
+      setFormExiting(true);
+      const timer = setTimeout(() => {
+        setShowSuccess(true);
+      }, 400);
+      return () => clearTimeout(timer);
+    }
+  }, [actionData?.success]);
 
   return (
     <Page prose>
@@ -95,87 +141,89 @@ export default function Contact() {
       <div className="card stagger-animation">
         <h2>Get in touch</h2>
 
-        {actionData?.success ? (
-          <p className="success-message">
-            Thanks for reaching out! We'll get back to you within two business days.
-          </p>
-        ) : (
-          <Form method="post">
-            {actionData?.error && (
-              <p className="error-message">{actionData.error}</p>
-            )}
+        <div className="form-container">
+          {showSuccess ? (
+            <SuccessAnimation />
+          ) : (
+            <div className={`form-content ${formExiting ? "form-exiting" : ""} ${isSubmitting ? "form-submitting" : ""}`}>
+              <Form method="post">
+                {actionData?.error && (
+                  <p className="error-message">{actionData.error}</p>
+                )}
 
-            {/* Honeypot field - hidden from users, bots will fill it */}
-            <input
-              type="text"
-              name="website"
-              autoComplete="off"
-              tabIndex={-1}
-              aria-hidden="true"
-              className="honeypot"
-            />
+                {/* Honeypot field - hidden from users, bots will fill it */}
+                <input
+                  type="text"
+                  name="website"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="honeypot"
+                />
 
-            <FormField
-              label="Name"
-              name="name"
-              placeholder="Your name"
-              required
-              maxLength={CONTACT_LIMITS.name}
-            />
+                <FormField
+                  label="Name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  maxLength={CONTACT_LIMITS.name}
+                />
 
-            <FormField
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="you@example.com"
-              required
-              maxLength={CONTACT_LIMITS.email}
-            />
+                <FormField
+                  label="Email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                  maxLength={CONTACT_LIMITS.email}
+                />
 
-            <FormField
-              label="Company / Team"
-              name="company"
-              placeholder="Company name"
-              maxLength={CONTACT_LIMITS.company}
-            />
+                <FormField
+                  label="Company / Team"
+                  name="company"
+                  placeholder="Company name"
+                  maxLength={CONTACT_LIMITS.company}
+                />
 
-            <label>
-              Budget range (optional)
-              <select name="budget">
-                <option value="">Select a range</option>
-                <option value="under-25k">Under $25k</option>
-                <option value="25-50k">$25k–$50k</option>
-                <option value="50-100k">$50k–$100k</option>
-                <option value="100k-plus">$100k+</option>
-              </select>
-            </label>
+                <label>
+                  Budget range (optional)
+                  <select name="budget">
+                    <option value="">Select a range</option>
+                    <option value="under-25k">Under $25k</option>
+                    <option value="25-50k">$25k–$50k</option>
+                    <option value="50-100k">$50k–$100k</option>
+                    <option value="100k-plus">$100k+</option>
+                  </select>
+                </label>
 
-            <FormField
-              label="Timeline"
-              name="timeline"
-              placeholder="Ideal launch date"
-              maxLength={CONTACT_LIMITS.timeline}
-            />
+                <FormField
+                  label="Timeline"
+                  name="timeline"
+                  placeholder="Ideal launch date"
+                  maxLength={CONTACT_LIMITS.timeline}
+                />
 
-            <FormField
-              label="Project details"
-              name="message"
-              type="textarea"
-              placeholder="What are you looking to build or improve?"
-              required
-              maxLength={CONTACT_LIMITS.message}
-              showCounter
-            />
+                <FormField
+                  label="Project details"
+                  name="message"
+                  type="textarea"
+                  placeholder="What are you looking to build or improve?"
+                  required
+                  maxLength={CONTACT_LIMITS.message}
+                  showCounter
+                />
 
-            {TURNSTILE_SITE_KEY && (
-              <Turnstile siteKey={TURNSTILE_SITE_KEY} />
-            )}
+                {TURNSTILE_SITE_KEY && (
+                  <Turnstile siteKey={TURNSTILE_SITE_KEY} />
+                )}
 
-            <button type="submit" className="btn btn-accent" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Get in touch"}
-            </button>
-          </Form>
-        )}
+                <button type="submit" className="btn btn-accent" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Get in touch"}
+                </button>
+              </Form>
+            </div>
+          )}
+        </div>
 
         <p className="muted">
           Prefer email? Reach us at{" "}

@@ -7,13 +7,35 @@
   padding: $spacing-4xl 0;
   margin-top: $spacing-5xl;
 
-  .container {
-    text-align: center;
-    color: $text-secondary;
-    font-size: $font-size-sm;
-  }
-
   @include mobile {
     padding: $spacing-3xl 0;
+  }
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $text-secondary;
+  font-size: $font-size-sm;
+
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+}
+
+.footer-nav {
+  display: flex;
+  gap: $spacing-lg;
+}
+
+.footer-link {
+  color: $text-secondary;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $text-primary;
   }
 }

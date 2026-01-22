@@ -1,0 +1,90 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.legal-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacing-2xl 0;
+
+  h1 {
+    font-size: $font-size-3xl;
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  .legal-updated {
+    color: $text-tertiary;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-2xl;
+  }
+}
+
+.legal-section {
+  margin-bottom: $spacing-xl;
+
+  h2 {
+    font-size: $font-size-xl;
+    color: $text-primary;
+    margin-bottom: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 1px solid $border-light;
+
+    &:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+    color: $text-primary;
+    margin-top: $spacing-lg;
+    margin-bottom: $spacing-sm;
+  }
+
+  p {
+    color: $text-secondary;
+    line-height: $line-height-relaxed;
+    margin-bottom: $spacing-md;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul {
+    color: $text-secondary;
+    line-height: $line-height-relaxed;
+    margin-bottom: $spacing-md;
+    padding-left: $spacing-lg;
+
+    li {
+      margin-bottom: $spacing-xs;
+      position: relative;
+
+      &::marker {
+        color: $accent;
+      }
+    }
+  }
+
+  a {
+    color: $accent;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $accent-dark;
+      text-decoration: underline;
+    }
+  }
+
+  strong {
+    color: $text-primary;
+    font-weight: 600;
+  }
+}

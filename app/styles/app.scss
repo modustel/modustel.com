@@ -15,8 +15,10 @@
 @use "forms";
 @use "about";
 @use "work";
+@use "error";
+@use "legal";
 @use "utilities";
 @use "animations";
 
-// Tailwind import at the end (uses CSS @import syntax which is allowed after @use)
-@import "tailwindcss";
+// Tailwind uses CSS layer syntax
+@use "tailwindcss";

@@ -95,6 +95,23 @@
   }
 }
 
+@keyframes meteor {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300px) translateY(150px);
+    opacity: 0;
+  }
+}
+
 // ========== ANIMATION CLASSES ==========
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out;
@@ -135,6 +152,107 @@
 
 .animate-draw {
   animation: draw 1.5s ease-out forwards;
+}
+
+.animate-meteor {
+  animation: meteor 4s linear infinite;
+}
+
+.animate-meteor-slow {
+  animation: meteor 6s linear infinite;
+}
+
+.animate-meteor-fast {
+  animation: meteor 3s linear infinite;
+}
+
+// ========== FORM SUCCESS ANIMATIONS ==========
+@keyframes formSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+}
+
+@keyframes successPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes checkmarkDraw {
+  0% {
+    stroke-dashoffset: 50;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes circleDraw {
+  0% {
+    stroke-dashoffset: 166;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0);
+  }
+}
+
+@keyframes particleBurst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes ringExpand {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
 }
 
 // ========== STAGGERED ANIMATIONS ==========
