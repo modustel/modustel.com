@@ -8,14 +8,15 @@ datasource db {
 }
 
 model Contact {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(100)
-  email     String   @db.VarChar(255)
-  company   String?  @db.VarChar(100)
-  budget    String?  @db.VarChar(20)
-  timeline  String?  @db.VarChar(100)
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(100)
+  email     String    @db.VarChar(255)
+  company   String?   @db.VarChar(100)
+  budget    String?   @db.VarChar(20)
+  timeline  String?   @db.VarChar(100)
   message   String
-  createdAt DateTime @default(now()) @map("created_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  readAt    DateTime? @map("read_at")
 
   @@map("contacts")
 }

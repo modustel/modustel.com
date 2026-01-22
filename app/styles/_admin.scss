@@ -131,10 +131,53 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
   h2 {
-    margin: 0 0 $spacing-lg;
+    margin: 0;
     font-size: $font-size-lg;
     font-weight: 600;
     color: $text-primary;
+  }
+}
+
+.admin-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  flex-wrap: wrap;
+}
+
+.admin-unread-count {
+  margin-left: $spacing-sm;
+  padding: $spacing-2xs $spacing-sm;
+  background: $accent;
+  color: white;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  border-radius: $radius-full;
+}
+
+.admin-filter-tabs {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.admin-filter-tab {
+  padding: $spacing-xs $spacing-md;
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  text-decoration: none;
+  border-radius: $radius-sm;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $bg-secondary;
+    color: $text-primary;
+  }
+
+  &.active {
+    background: $accent;
+    color: white;
   }
 }
 
@@ -160,7 +203,7 @@
     padding: $spacing-sm $spacing-md;
     text-align: left;
     border-bottom: 1px solid $border-light;
-    vertical-align: top;
+    vertical-align: middle;
   }
 
   th {
@@ -175,6 +218,14 @@
 
     &:hover {
       background: $bg-primary;
+    }
+
+    &.unread {
+      font-weight: 500;
+    }
+
+    &.read {
+      color: $text-secondary;
     }
   }
 
@@ -194,6 +245,21 @@
   .message-cell {
     max-width: 300px;
     word-break: break-word;
+  }
+}
+
+.admin-status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  &.unread {
+    background: $accent;
+  }
+
+  &.read {
+    background: $border;
   }
 }
 
@@ -249,7 +315,7 @@
   border-bottom: 1px solid $border-light;
 
   h2 {
-    margin: 0 0 $spacing-xs;
+    margin: 0;
     font-size: $font-size-2xl;
     font-weight: 600;
     color: $text-primary;
@@ -259,6 +325,23 @@
     font-size: $font-size-sm;
     color: $text-tertiary;
   }
+}
+
+.admin-contact-title {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.admin-read-badge {
+  padding: $spacing-2xs $spacing-sm;
+  background: $bg-secondary;
+  color: $text-secondary;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  border-radius: $radius-sm;
 }
 
 .admin-contact-meta {

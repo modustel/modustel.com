@@ -57,29 +57,60 @@ export async function createContact(data: ContactSubmission): Promise<ContactRes
 
 const DEFAULT_PAGE_SIZE = 25;
 
-export async function getContacts(page = 1, pageSize = DEFAULT_PAGE_SIZE) {
+export type ContactFilter = "all" | "unread" | "read";
+
+export async function getContacts(
+  page = 1,
+  pageSize = DEFAULT_PAGE_SIZE,
+  filter: ContactFilter = "all"
+) {
   const skip = (page - 1) * pageSize;
 
-  const [contacts, totalCount] = await Promise.all([
+  const where =
+    filter === "unread"
+      ? { readAt: null }
+      : filter === "read"
+        ? { readAt: { not: null } }
+        : {};
+
+  const [contacts, totalCount, unreadCount] = await Promise.all([
     db.contact.findMany({
+      where,
       orderBy: { createdAt: "desc" },
       skip,
       take: pageSize,
     }),
-    db.contact.count(),
+    db.contact.count({ where }),
+    db.contact.count({ where: { readAt: null } }),
   ]);
 
   return {
     contacts,
     totalCount,
+    unreadCount,
     page,
     pageSize,
     totalPages: Math.ceil(totalCount / pageSize),
+    filter,
   };
 }
 
 export async function getContactById(id: number) {
   return db.contact.findUnique({
     where: { id },
+  });
+}
+
+export async function markContactAsRead(id: number) {
+  return db.contact.update({
+    where: { id },
+    data: { readAt: new Date() },
+  });
+}
+
+export async function markContactAsUnread(id: number) {
+  return db.contact.update({
+    where: { id },
+    data: { readAt: null },
   });
 }
