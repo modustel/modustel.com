@@ -55,8 +55,31 @@ export async function createContact(data: ContactSubmission): Promise<ContactRes
   }
 }
 
-export async function getContacts() {
-  return db.contact.findMany({
-    orderBy: { createdAt: "desc" },
+const DEFAULT_PAGE_SIZE = 25;
+
+export async function getContacts(page = 1, pageSize = DEFAULT_PAGE_SIZE) {
+  const skip = (page - 1) * pageSize;
+
+  const [contacts, totalCount] = await Promise.all([
+    db.contact.findMany({
+      orderBy: { createdAt: "desc" },
+      skip,
+      take: pageSize,
+    }),
+    db.contact.count(),
+  ]);
+
+  return {
+    contacts,
+    totalCount,
+    page,
+    pageSize,
+    totalPages: Math.ceil(totalCount / pageSize),
+  };
+}
+
+export async function getContactById(id: number) {
+  return db.contact.findUnique({
+    where: { id },
   });
 }

@@ -17,4 +17,5 @@ export default [
   route("admin", "routes/admin._index.tsx"),
   route("admin/login", "routes/admin.login.tsx"),
   route("admin/logout", "routes/admin.logout.tsx"),
+  route("admin/contacts/:id", "routes/admin.contacts.$id.tsx"),
 ] satisfies RouteConfig;
