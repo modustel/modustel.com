@@ -51,7 +51,6 @@ export function meta({}: Route.MetaArgs) {
 export default function Services() {
   return (
     <Page
-      prose
       footer={
         <CallToActionSection
           heading="Ready to start?"
@@ -60,16 +59,17 @@ export default function Services() {
         />
       }
     >
-      <PageHeader
-        title="Services"
-        description="We package outcomes, not hours. Each engagement is designed to ship a usable system quickly and then harden it for long-term use."
-        graphic={<ServicesHeaderGraphic />}
-        graphicPosition="right"
-      />
+      <div className="container">
+        <PageHeader
+          title="Services"
+          description="We package outcomes, not hours. Each engagement is designed to ship a usable system quickly and then harden it for long-term use."
+          graphic={<ServicesHeaderGraphic />}
+          graphicPosition="right"
+        />
 
-      <section>
-        <h2 className="section-title animate-fade-in">Service packages</h2>
-        <div className="grid stagger-animation">
+        <section>
+          <h2 className="section-title animate-fade-in">Service packages</h2>
+          <div className="services-grid stagger-animation">
           <Card
             graphic={<ProposalAutomationGraphic />}
             title="Proposal Automation System"
@@ -122,7 +122,7 @@ export default function Services() {
 
       <section>
         <h2 className="section-title animate-fade-in">Engagement models</h2>
-        <div className="grid stagger-animation">
+        <div className="services-grid services-grid-3 stagger-animation">
           <Card
             graphic={<FixedSprintGraphic />}
             title="Fixed-scope sprint"
@@ -146,7 +146,7 @@ export default function Services() {
 
       <section>
         <h2 className="section-title animate-fade-in">How we deliver</h2>
-        <div className="grid stagger-animation">
+        <div className="services-grid services-grid-4 stagger-animation">
           <Card
             graphic={<DiscoverGraphic />}
             title="Discover"
@@ -173,6 +173,7 @@ export default function Services() {
           />
         </div>
       </section>
+      </div>
     </Page>
   );
 }

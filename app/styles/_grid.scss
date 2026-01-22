@@ -35,3 +35,44 @@
     }
   }
 }
+
+// Services page grid - wider cards for better visual balance
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-2xl;
+  margin: $spacing-2xl 0;
+  width: 100%;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+
+  @include mobile {
+    gap: $spacing-lg;
+    margin: $spacing-xl 0;
+  }
+
+  // 3-column variant for engagement models
+  &.services-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // 4-column variant for how we deliver
+  &.services-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}
