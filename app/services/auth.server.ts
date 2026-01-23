@@ -52,6 +52,22 @@ export async function validateSession(sessionId: string) {
     return null;
   }
 
+  // Sliding expiry: extend session if more than halfway through its lifetime
+  const halfwayPoint = new Date(session.expiresAt.getTime() - SESSION_DURATION_MS / 2);
+  if (new Date() > halfwayPoint) {
+    await db.adminSession.update({
+      where: { id: sessionId },
+      data: { expiresAt: new Date(Date.now() + SESSION_DURATION_MS) },
+    });
+  }
+
+  // Opportunistic cleanup: 1% chance to clean expired sessions
+  if (Math.random() < 0.01) {
+    cleanupExpiredSessions().catch(() => {
+      // Ignore cleanup errors - not critical
+    });
+  }
+
   return session;
 }
 
@@ -61,6 +77,13 @@ export async function deleteSession(sessionId: string): Promise<void> {
   } catch {
     // Session may already be deleted
   }
+}
+
+export async function cleanupExpiredSessions(): Promise<number> {
+  const result = await db.adminSession.deleteMany({
+    where: { expiresAt: { lt: new Date() } },
+  });
+  return result.count;
 }
 
 export function getSessionIdFromRequest(request: Request): string | null {

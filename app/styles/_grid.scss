@@ -8,6 +8,12 @@
   margin: $spacing-3xl 0;
   width: 100%;
 
+  // Tablet: ensure 2 columns for better layout
+  @include tablet-only {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+  }
+
   @include mobile {
     grid-template-columns: 1fr;
     gap: $spacing-xl;
@@ -20,7 +26,7 @@
   }
 
   &.grid-2 {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
 
     @include mobile {
       grid-template-columns: 1fr;
@@ -28,7 +34,11 @@
   }
 
   &.grid-3 {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+
+    @include tablet-only {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     @include mobile {
       grid-template-columns: 1fr;
@@ -44,12 +54,13 @@
   margin: $spacing-2xl 0;
   width: 100%;
 
-  @include tablet {
-    grid-template-columns: 1fr;
+  @include tablet-only {
+    grid-template-columns: repeat(2, 1fr);
     gap: $spacing-xl;
   }
 
   @include mobile {
+    grid-template-columns: 1fr;
     gap: $spacing-lg;
     margin: $spacing-xl 0;
   }
@@ -58,7 +69,11 @@
   &.services-grid-3 {
     grid-template-columns: repeat(3, 1fr);
 
-    @include tablet {
+    @include tablet-only {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
       grid-template-columns: 1fr;
     }
   }

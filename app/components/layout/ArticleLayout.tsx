@@ -23,8 +23,32 @@ export function ArticleLayout({
       })
     : null;
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description: description,
+    author: {
+      "@type": "Organization",
+      name: author || "Modus Tel Labs",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Modus Tel Labs",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://modustel.com/assets/logos/ModusTelLogo.svg",
+      },
+    },
+    datePublished: date,
+  };
+
   return (
     <article className="article animate-fade-in">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <header className="article-header">
         <div className="article-meta">
           {formattedDate && (

@@ -18,6 +18,7 @@
   cursor: pointer;
   min-height: 44px;
   text-align: center;
+  @include focus-visible-ring;
 
   &:hover {
     transform: translateY(-1px);
@@ -50,14 +51,15 @@
   }
 }
 
-.btn-large {
-  padding: $spacing-md $spacing-2xl !important;
-  font-size: $font-size-md !important;
-  min-height: 50px !important;
+// Large button variant - use .btn.btn-large for proper specificity
+.btn.btn-large {
+  padding: $spacing-md $spacing-2xl;
+  font-size: $font-size-md;
+  min-height: 50px;
 
   @include mobile {
     width: 100%;
-    padding: $spacing-md $spacing-lg !important;
+    padding: $spacing-md $spacing-lg;
   }
 }
 

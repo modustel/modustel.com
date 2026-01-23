@@ -64,18 +64,20 @@
   }
 }
 
+// Hero-specific headline (larger than heading-xl)
 .hero-headline {
-  @include heading-xl;
-  font-size: clamp(3rem, 6vw, 4rem) !important;
-  line-height: 1.1 !important;
+  font-size: clamp(3rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: $line-height-tight;
+  letter-spacing: -0.02em;
   @include gradient-text($text-primary, $accent-dark);
-  margin: 0 0 $spacing-lg 0 !important;
+  margin: 0 0 $spacing-lg 0;
 }
 
 .hero-subtitle {
-  font-size: $font-size-lg !important;
-  line-height: 1.7 !important;
-  color: $text-secondary !important;
+  font-size: $font-size-lg;
+  line-height: $line-height-relaxed;
+  color: $text-secondary;
   max-width: 600px;
-  margin: 0 0 $spacing-2xl 0 !important;
+  margin: 0 0 $spacing-2xl 0;
 }

@@ -44,7 +44,7 @@
 }
 
 .cta-section-epic {
-  background: linear-gradient(135deg, $bg-secondary 0%, #fff5ee 100%);
+  background: linear-gradient(135deg, $bg-secondary 0%, $accent-tint 100%);
   border: 2px solid $border;
   border-radius: $radius-xl;
   padding: $spacing-6xl $spacing-4xl;

@@ -57,6 +57,8 @@ form button[type="submit"] {
   font-weight: 600;
   cursor: pointer;
   min-height: 44px;
+  border-radius: $radius-md;
+  @include focus-visible-ring;
 
   &:hover {
     background: $accent-dark;
@@ -88,7 +90,7 @@ form button[type="submit"] {
   }
 
   .field-error-message {
-    color: #dc2626;
+    color: $color-error;
   }
 
   .char-counter {
@@ -101,18 +103,18 @@ form button[type="submit"] {
     }
 
     &.at-limit {
-      color: #dc2626;
+      color: $color-error;
       font-weight: 500;
     }
   }
 
   input.field-error,
   textarea.field-error {
-    border-color: #dc2626;
+    border-color: $color-error;
 
     &:focus {
-      outline-color: #dc2626;
-      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+      outline-color: $color-error;
+      box-shadow: 0 0 0 3px rgba($color-error, 0.1);
     }
   }
 }

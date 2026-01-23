@@ -21,14 +21,17 @@ export function meta({}: Route.MetaArgs) {
   const description =
     "Custom AI development, automation, and software solutions to modernize your business operations and drive results.";
   const ogImage = "https://modustel.com/assets/og-modustel.svg";
+  const canonicalUrl = "https://modustel.com/services";
   return [
     { title },
     {
       name: "description",
       content: description,
     },
+    { tagName: "link", rel: "canonical", href: canonicalUrl },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
+    { property: "og:url", content: canonicalUrl },
     { property: "og:image", content: ogImage },
     {
       property: "og:image:alt",
@@ -43,10 +46,64 @@ export function meta({}: Route.MetaArgs) {
     { name: "twitter:image", content: ogImage },
     {
       name: "twitter:image:alt",
-      content: "Modus Tel Labs — Research and products at the frontier of safety",
+      content: "Modus Tel Labs — AI-powered transformation services",
     },
   ];
 }
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "AI & Automation Solutions",
+  provider: {
+    "@type": "Organization",
+    name: "Modus Tel Labs",
+    url: "https://modustel.com",
+  },
+  areaServed: "Worldwide",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "AI & Software Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Proposal Automation System",
+          description:
+            "A full pipeline from intake to pricing to PDF delivery with CRM sync.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Operations Command Center",
+          description:
+            "A single pane of glass for dashboards, alerts, and escalation workflows.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "M365-Native Internal Apps",
+          description:
+            "Teams, SharePoint, and Outlook extensions that fit existing security and identity models.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Integration Layer",
+          description:
+            "Microsoft Graph, CRMs, accounting, and custom data sources aligned with your architecture.",
+        },
+      },
+    ],
+  },
+};
 
 export default function Services() {
   return (
@@ -59,6 +116,10 @@ export default function Services() {
         />
       }
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      />
       <div className="container">
         <PageHeader
           title="Services"

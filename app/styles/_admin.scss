@@ -39,6 +39,26 @@
   }
 }
 
+.admin-login-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-xl;
+  text-decoration: none;
+}
+
+.admin-login-logo {
+  height: 32px;
+  width: auto;
+}
+
+.admin-login-brand-text {
+  font-size: $font-size-lg;
+  font-weight: 600;
+  color: $text-primary;
+}
+
 .admin-login-form {
   display: flex;
   flex-direction: column;
@@ -71,10 +91,10 @@
   .error-message {
     margin: 0;
     padding: $spacing-sm $spacing-md;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
+    background: $color-error-light;
+    border: 1px solid $color-error-border;
     border-radius: $radius-sm;
-    color: #dc2626;
+    color: $color-error;
     font-size: $font-size-sm;
   }
 

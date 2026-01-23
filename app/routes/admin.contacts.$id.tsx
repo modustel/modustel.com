@@ -1,23 +1,22 @@
 import { Form, Link, useLoaderData, useNavigation } from "react-router";
 import type { Route } from "./+types/admin.contacts.$id";
+import { handleIntent } from "../services/actions.server";
 import { requireAdmin } from "../services/auth.server";
 import {
   getContactById,
   markContactAsRead,
   markContactAsUnread,
 } from "../services/contact.server";
+import { notFound, parseIntParam } from "../services/http.server";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   await requireAdmin(request);
 
-  const id = parseInt(params.id, 10);
-  if (isNaN(id)) {
-    throw new Response("Invalid contact ID", { status: 400 });
-  }
-
+  const id = parseIntParam(params, "id");
   const contact = await getContactById(id);
+
   if (!contact) {
-    throw new Response("Contact not found", { status: 404 });
+    notFound("Contact not found");
   }
 
   return { contact };
@@ -26,21 +25,23 @@ export async function loader({ request, params }: Route.LoaderArgs) {
 export async function action({ request, params }: Route.ActionArgs) {
   await requireAdmin(request);
 
-  const id = parseInt(params.id, 10);
-  if (isNaN(id)) {
-    throw new Response("Invalid contact ID", { status: 400 });
-  }
-
+  const id = parseIntParam(params, "id");
   const formData = await request.formData();
-  const intent = formData.get("intent");
 
-  if (intent === "markRead") {
-    await markContactAsRead(id);
-  } else if (intent === "markUnread") {
-    await markContactAsUnread(id);
-  }
-
-  return { success: true };
+  return handleIntent(
+    formData,
+    {
+      markRead: async () => {
+        await markContactAsRead(id);
+        return { success: true };
+      },
+      markUnread: async () => {
+        await markContactAsUnread(id);
+        return { success: true };
+      },
+    },
+    { success: false }
+  );
 }
 
 export function meta({ data }: Route.MetaArgs) {

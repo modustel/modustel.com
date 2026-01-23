@@ -18,9 +18,7 @@
   transition: all $transition-smooth;
 
   &:hover {
-    border-color: $accent;
-    box-shadow: 0 20px 40px rgba($accent, 0.1);
-    transform: translateY(-4px);
+    @include card-hover;
   }
 
   @include tablet {

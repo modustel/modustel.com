@@ -10,6 +10,7 @@
       }
     },
     "routeIdToServerBundleId": {
+      "routes/sitemap[.]xml": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/home": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/services": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/work._index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
@@ -19,7 +20,13 @@
       "routes/insights.designing-for-edge-cases": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/insights.$slug": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/about": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/contact": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+      "routes/contact": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/privacy": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/terms": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin._index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin.login": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin.logout": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin.contacts.$id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
     },
     "routes": {
       "root": {
@@ -27,6 +34,15 @@
         "file": "app/root.tsx",
         "path": "",
         "config": {}
+      },
+      "routes/sitemap[.]xml": {
+        "id": "routes/sitemap[.]xml",
+        "parentId": "root",
+        "file": "app/routes/sitemap[.]xml.tsx",
+        "path": "sitemap.xml",
+        "config": {
+          "runtime": "nodejs"
+        }
       },
       "routes/home": {
         "id": "routes/home",
@@ -117,6 +133,66 @@
         "config": {
           "runtime": "nodejs"
         }
+      },
+      "routes/privacy": {
+        "id": "routes/privacy",
+        "parentId": "root",
+        "file": "app/routes/privacy.tsx",
+        "path": "privacy",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/terms": {
+        "id": "routes/terms",
+        "parentId": "root",
+        "file": "app/routes/terms.tsx",
+        "path": "terms",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin": {
+        "id": "routes/admin",
+        "parentId": "root",
+        "file": "app/routes/admin.tsx",
+        "config": {}
+      },
+      "routes/admin._index": {
+        "id": "routes/admin._index",
+        "parentId": "routes/admin",
+        "file": "app/routes/admin._index.tsx",
+        "path": "admin",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin.login": {
+        "id": "routes/admin.login",
+        "parentId": "routes/admin",
+        "file": "app/routes/admin.login.tsx",
+        "path": "admin/login",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin.logout": {
+        "id": "routes/admin.logout",
+        "parentId": "routes/admin",
+        "file": "app/routes/admin.logout.tsx",
+        "path": "admin/logout",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin.contacts.$id": {
+        "id": "routes/admin.contacts.$id",
+        "parentId": "routes/admin",
+        "file": "app/routes/admin.contacts.$id.tsx",
+        "path": "admin/contacts/:id",
+        "config": {
+          "runtime": "nodejs"
+        }
       }
     }
   },
@@ -137,6 +213,12 @@
         "id": "root",
         "file": "root.tsx",
         "path": ""
+      },
+      "routes/sitemap[.]xml": {
+        "id": "routes/sitemap[.]xml",
+        "parentId": "root",
+        "file": "routes/sitemap[.]xml.tsx",
+        "path": "sitemap.xml"
       },
       "routes/home": {
         "id": "routes/home",
@@ -197,6 +279,47 @@
         "parentId": "root",
         "file": "routes/contact.tsx",
         "path": "contact"
+      },
+      "routes/privacy": {
+        "id": "routes/privacy",
+        "parentId": "root",
+        "file": "routes/privacy.tsx",
+        "path": "privacy"
+      },
+      "routes/terms": {
+        "id": "routes/terms",
+        "parentId": "root",
+        "file": "routes/terms.tsx",
+        "path": "terms"
+      },
+      "routes/admin": {
+        "id": "routes/admin",
+        "parentId": "root",
+        "file": "routes/admin.tsx"
+      },
+      "routes/admin._index": {
+        "id": "routes/admin._index",
+        "parentId": "routes/admin",
+        "file": "routes/admin._index.tsx",
+        "path": "admin"
+      },
+      "routes/admin.login": {
+        "id": "routes/admin.login",
+        "parentId": "routes/admin",
+        "file": "routes/admin.login.tsx",
+        "path": "admin/login"
+      },
+      "routes/admin.logout": {
+        "id": "routes/admin.logout",
+        "parentId": "routes/admin",
+        "file": "routes/admin.logout.tsx",
+        "path": "admin/logout"
+      },
+      "routes/admin.contacts.$id": {
+        "id": "routes/admin.contacts.$id",
+        "parentId": "routes/admin",
+        "file": "routes/admin.contacts.$id.tsx",
+        "path": "admin/contacts/:id"
       }
     },
     "routeDiscovery": {
@@ -213,6 +336,10 @@
         "path": "",
         "file": "root.tsx",
         "children": [
+          {
+            "file": "routes/sitemap[.]xml.tsx",
+            "path": "sitemap.xml"
+          },
           {
             "file": "routes/home.tsx",
             "index": true
@@ -252,6 +379,35 @@
           {
             "file": "routes/contact.tsx",
             "path": "contact"
+          },
+          {
+            "file": "routes/privacy.tsx",
+            "path": "privacy"
+          },
+          {
+            "file": "routes/terms.tsx",
+            "path": "terms"
+          },
+          {
+            "file": "routes/admin.tsx",
+            "children": [
+              {
+                "file": "routes/admin._index.tsx",
+                "path": "admin"
+              },
+              {
+                "file": "routes/admin.login.tsx",
+                "path": "admin/login"
+              },
+              {
+                "file": "routes/admin.logout.tsx",
+                "path": "admin/logout"
+              },
+              {
+                "file": "routes/admin.contacts.$id.tsx",
+                "path": "admin/contacts/:id"
+              }
+            ]
           }
         ]
       }

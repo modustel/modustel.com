@@ -62,7 +62,15 @@ export default function AdminLogin() {
   return (
     <div className="admin-page admin-login-page">
       <div className="admin-login-container">
-          <h1>Admin Login</h1>
+        <a href="/" className="admin-login-brand">
+          <img
+            src="/assets/logos/ModusTelLogo.svg"
+            alt="Modus Tel Labs"
+            className="admin-login-logo"
+          />
+          <span className="admin-login-brand-text">Modus Tel Labs</span>
+        </a>
+        <h1>Admin Login</h1>
 
           <Form method="post" className="admin-login-form">
             {actionData?.error && (

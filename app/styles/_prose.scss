@@ -314,9 +314,7 @@
   }
 
   &:hover {
-    border-color: $accent;
-    box-shadow: $shadow-lg rgba($accent, 0.1);
-    transform: translateY(-2px);
+    @include card-hover;
 
     &::before {
       transform: scaleX(1);
