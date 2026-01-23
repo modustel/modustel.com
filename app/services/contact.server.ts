@@ -1,11 +1,12 @@
 import { db } from "./db.server";
 import {
   CONTACT_LIMITS,
+  isValidEmail,
   type ContactSubmission,
   type ContactResult,
 } from "./contact.shared";
 
-export { CONTACT_LIMITS, type ContactSubmission, type ContactResult };
+export { CONTACT_LIMITS, isValidEmail, type ContactSubmission, type ContactResult };
 
 export function validateContact(data: ContactSubmission): ContactResult {
   if (!data.name || !data.email || !data.message) {
@@ -18,8 +19,14 @@ export function validateContact(data: ContactSubmission): ContactResult {
   if (data.email.length > CONTACT_LIMITS.email) {
     return { success: false, error: `Email must be ${CONTACT_LIMITS.email} characters or less.` };
   }
+  if (!isValidEmail(data.email)) {
+    return { success: false, error: "Please enter a valid email address." };
+  }
   if (data.company && data.company.length > CONTACT_LIMITS.company) {
     return { success: false, error: `Company must be ${CONTACT_LIMITS.company} characters or less.` };
+  }
+  if (data.budget && data.budget.length > CONTACT_LIMITS.budget) {
+    return { success: false, error: `Budget must be ${CONTACT_LIMITS.budget} characters or less.` };
   }
   if (data.timeline && data.timeline.length > CONTACT_LIMITS.timeline) {
     return { success: false, error: `Timeline must be ${CONTACT_LIMITS.timeline} characters or less.` };
@@ -50,7 +57,7 @@ export async function createContact(data: ContactSubmission): Promise<ContactRes
     });
     return { success: true };
   } catch (error) {
-    console.error("Failed to save contact:", error);
+    console.error("Failed to save contact:", error instanceof Error ? error.message : "Unknown error");
     return { success: false, error: "Something went wrong. Please try again." };
   }
 }

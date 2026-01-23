@@ -56,7 +56,11 @@ const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/sit
 
 export async function verifyTurnstile(token: string): Promise<boolean> {
   if (!TURNSTILE_SECRET_KEY) {
-    console.warn("TURNSTILE_SECRET_KEY not set, skipping verification");
+    if (process.env.NODE_ENV === "production") {
+      console.error("TURNSTILE_SECRET_KEY must be set in production");
+      return false;
+    }
+    console.warn("TURNSTILE_SECRET_KEY not set, skipping verification in development");
     return true;
   }
 
@@ -77,7 +81,7 @@ export async function verifyTurnstile(token: string): Promise<boolean> {
     const data = await response.json();
     return data.success === true;
   } catch (error) {
-    console.error("Turnstile verification failed:", error);
+    console.error("Turnstile verification failed:", error instanceof Error ? error.message : "Unknown error");
     return false;
   }
 }
