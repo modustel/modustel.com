@@ -1,0 +1,449 @@
+@use "variables" as *;
+@use "sass:color";
+
+// ========== ADMIN LAYOUT ==========
+.admin-layout {
+  min-height: 100vh;
+  background: $bg-secondary;
+}
+
+.admin-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// ========== ADMIN LOGIN ==========
+.admin-login-page {
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-2xl $spacing-xl;
+  background: linear-gradient(135deg, $bg-secondary 0%, color.adjust($bg-secondary, $lightness: -3%) 100%);
+}
+
+.admin-login-container {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: $spacing-2xl;
+  border-radius: $radius-lg;
+  border: 1px solid $border;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    margin: 0 0 $spacing-xl;
+    font-size: $font-size-2xl;
+    font-weight: 600;
+    color: $text-primary;
+    text-align: center;
+  }
+}
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $text-secondary;
+  }
+
+  input {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-base;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    background: $bg-primary;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: $accent;
+      box-shadow: 0 0 0 3px rgba($accent, 0.1);
+    }
+  }
+
+  .error-message {
+    margin: 0;
+    padding: $spacing-sm $spacing-md;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: $radius-sm;
+    color: #dc2626;
+    font-size: $font-size-sm;
+  }
+
+  button {
+    margin-top: $spacing-sm;
+  }
+}
+
+// ========== ADMIN HEADER ==========
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-lg;
+  padding: $spacing-md $spacing-xl;
+  background: white;
+  border-bottom: 1px solid $border;
+  flex-shrink: 0;
+
+  h1 {
+    margin: 0;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $text-primary;
+  }
+}
+
+.admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.admin-user {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+}
+
+// ========== ADMIN MAIN CONTENT ==========
+.admin-main {
+  flex: 1;
+  padding: $spacing-xl;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.admin-section {
+  background: white;
+  border-radius: $radius-lg;
+  border: 1px solid $border;
+  padding: $spacing-xl;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    margin: 0;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $text-primary;
+  }
+}
+
+.admin-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  flex-wrap: wrap;
+}
+
+.admin-unread-count {
+  margin-left: $spacing-sm;
+  padding: $spacing-2xs $spacing-sm;
+  background: $accent;
+  color: white;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  border-radius: $radius-full;
+}
+
+.admin-filter-tabs {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.admin-filter-tab {
+  padding: $spacing-xs $spacing-md;
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  text-decoration: none;
+  border-radius: $radius-sm;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $bg-secondary;
+    color: $text-primary;
+  }
+
+  &.active {
+    background: $accent;
+    color: white;
+  }
+}
+
+.admin-empty {
+  color: $text-tertiary;
+  font-style: italic;
+}
+
+// ========== ADMIN TABLE ==========
+.admin-table-wrapper {
+  overflow-x: auto;
+  margin: 0 (-$spacing-xl);
+  padding: 0 $spacing-xl;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+
+  th,
+  td {
+    padding: $spacing-sm $spacing-md;
+    text-align: left;
+    border-bottom: 1px solid $border-light;
+    vertical-align: middle;
+  }
+
+  th {
+    font-weight: 600;
+    color: $text-secondary;
+    background: $bg-primary;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $bg-primary;
+    }
+
+    &.unread {
+      font-weight: 500;
+    }
+
+    &.read {
+      color: $text-secondary;
+    }
+  }
+
+  a {
+    color: $accent-dark;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .message-cell {
+    max-width: 300px;
+    word-break: break-word;
+  }
+}
+
+.admin-status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  &.unread {
+    background: $accent;
+  }
+
+  &.read {
+    background: $border;
+  }
+}
+
+// ========== PAGINATION ==========
+.admin-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-lg;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $border-light;
+
+  .disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.admin-pagination-info {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+}
+
+// ========== CONTACT DETAIL ==========
+.admin-header-back {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xs;
+}
+
+.admin-back-link {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  text-decoration: none;
+
+  &:hover {
+    color: $accent-dark;
+  }
+}
+
+.admin-contact-detail {
+  background: white;
+  border-radius: $radius-lg;
+  border: 1px solid $border;
+  padding: $spacing-2xl;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.admin-contact-header {
+  margin-bottom: $spacing-xl;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid $border-light;
+
+  h2 {
+    margin: 0;
+    font-size: $font-size-2xl;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  time {
+    font-size: $font-size-sm;
+    color: $text-tertiary;
+  }
+}
+
+.admin-contact-title {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.admin-read-badge {
+  padding: $spacing-2xs $spacing-sm;
+  background: $bg-secondary;
+  color: $text-secondary;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  border-radius: $radius-sm;
+}
+
+.admin-contact-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xs;
+  }
+
+  dt {
+    font-size: $font-size-xs;
+    font-weight: 600;
+    color: $text-tertiary;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  dd {
+    margin: 0;
+    font-size: $font-size-base;
+    color: $text-primary;
+
+    a {
+      color: $accent-dark;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.admin-contact-message {
+  margin-bottom: $spacing-xl;
+
+  h3 {
+    margin: 0 0 $spacing-md;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $text-tertiary;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.admin-contact-message-content {
+  background: $bg-primary;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: $text-primary;
+
+  p {
+    margin: 0;
+
+    + p {
+      margin-top: $spacing-md;
+    }
+  }
+}
+
+.admin-contact-actions {
+  display: flex;
+  gap: $spacing-md;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $border-light;
+}
+
+// ========== RESPONSIVE ==========
+@media (max-width: $breakpoint-md) {
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-md;
+    padding: $spacing-md;
+  }
+
+  .admin-main {
+    padding: $spacing-md;
+  }
+
+  .admin-section {
+    padding: $spacing-md;
+  }
+
+  .admin-table-wrapper {
+    margin: 0 (-$spacing-md);
+    padding: 0 $spacing-md;
+  }
+
+  .admin-contact-detail {
+    padding: $spacing-lg;
+  }
+
+  .admin-login-page {
+    padding: $spacing-lg;
+  }
+}

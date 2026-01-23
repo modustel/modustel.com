@@ -1,4 +1,9 @@
-import { type RouteConfig, route, index } from "@react-router/dev/routes";
+import {
+  type RouteConfig,
+  route,
+  index,
+  layout,
+} from "@react-router/dev/routes";
 
 export default [
   index("routes/home.tsx"),
@@ -13,4 +18,11 @@ export default [
   route("contact", "routes/contact.tsx"),
   route("privacy", "routes/privacy.tsx"),
   route("terms", "routes/terms.tsx"),
+  // Admin routes - bypass SiteLayout
+  layout("routes/admin.tsx", [
+    route("admin", "routes/admin._index.tsx"),
+    route("admin/login", "routes/admin.login.tsx"),
+    route("admin/logout", "routes/admin.logout.tsx"),
+    route("admin/contacts/:id", "routes/admin.contacts.$id.tsx"),
+  ]),
 ] satisfies RouteConfig;
