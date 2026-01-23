@@ -28,6 +28,8 @@
   display: flex;
   align-items: center;
   gap: $spacing-sm;
+  border-radius: $radius-sm;
+  @include focus-visible-ring;
 }
 
 .brand-logo {
@@ -104,6 +106,7 @@
   color: $text-primary;
   cursor: pointer;
   display: none; // Hidden on desktop
+  @include focus-visible-ring;
 
   span {
     display: block;
@@ -129,6 +132,8 @@
   text-decoration: none;
   font-weight: 500;
   transition: color $transition-fast;
+  border-radius: $radius-sm;
+  @include focus-visible-ring;
 
   &:hover {
     color: $text-primary;

@@ -138,10 +138,10 @@
 }
 
 .card-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+  background: linear-gradient(135deg, white 0%, rgba($accent-tint, 0.5) 100%);
 
   &:hover {
-    background: linear-gradient(135deg, #ffffff 0%, #fff5eb 100%);
+    background: linear-gradient(135deg, white 0%, $accent-tint 100%);
   }
 }
 
@@ -150,8 +150,14 @@
   text-decoration: none;
   display: block;
   cursor: pointer;
+  @include focus-visible-ring;
+  border-radius: $radius-xl;
 
   &:hover .card-title {
     text-decoration: none;
+  }
+
+  &:focus-visible .card {
+    border-color: $accent;
   }
 }

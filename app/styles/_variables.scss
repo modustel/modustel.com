@@ -5,11 +5,21 @@ $bg-tertiary: #ede9e4;
 
 $text-primary: #1a1612;
 $text-secondary: #5a5451;
-$text-tertiary: #8a8580;
+$text-tertiary: #6b6560; // Darkened for WCAG AA contrast
 
 $accent-dark: #7c2d12;
 $accent: #d97706;
 $accent-light: #f5a623;
+$accent-tint: #fff5ee; // Warm tint for gradient backgrounds
+
+// Semantic colors
+$color-error: #dc2626;
+$color-error-light: #fef2f2;
+$color-error-border: #fecaca;
+$color-success: #16a34a;
+$color-success-light: #f0fdf4;
+$color-warning: #ca8a04;
+$color-warning-light: #fefce8;
 
 $border: #e0dbd3;
 $border-light: #ede9e4;

@@ -19,6 +19,13 @@
   }
 }
 
+// Tablet-only: between mobile and tablet breakpoints (768px - 968px)
+@mixin tablet-only {
+  @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
 @mixin desktop {
   @media (min-width: $breakpoint-lg) {
     @content;
@@ -127,4 +134,16 @@
   outline: none;
   border-color: $accent;
   box-shadow: 0 0 0 3px rgba($accent, $opacity-xs);
+}
+
+// Focus-visible for keyboard navigation (buttons, links, cards)
+@mixin focus-visible-ring {
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
 }

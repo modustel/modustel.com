@@ -91,10 +91,10 @@
   .error-message {
     margin: 0;
     padding: $spacing-sm $spacing-md;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
+    background: $color-error-light;
+    border: 1px solid $color-error-border;
     border-radius: $radius-sm;
-    color: #dc2626;
+    color: $color-error;
     font-size: $font-size-sm;
   }
 
