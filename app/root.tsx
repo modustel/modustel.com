@@ -21,7 +21,12 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
-  { rel: "icon", href: "/assets/logos/ModusTelLogo.svg", type: "image/svg+xml" },
+  // Favicon - SVG for modern browsers, placed at root for broad compatibility
+  { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+  // Favicon - ico for old browsers, placed at root for broad compatibility
+  { rel: "shortcut icon", href: "/favicon.ico", type: "image/x-icon" },
+  // Apple touch icon for iOS home screen
+  { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
