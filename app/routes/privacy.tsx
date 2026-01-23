@@ -5,14 +5,17 @@ export function meta({}: Route.MetaArgs) {
   const title = "Privacy Policy — Modus Tel Labs";
   const description =
     "Learn how Modus Tel Labs collects, uses, and protects your personal information.";
+  const canonicalUrl = "https://modustel.com/privacy";
   return [
     { title },
     {
       name: "description",
       content: description,
     },
+    { tagName: "link", rel: "canonical", href: canonicalUrl },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
+    { property: "og:url", content: canonicalUrl },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary" },
     { name: "twitter:title", content: title },

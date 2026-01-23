@@ -7,6 +7,46 @@ author: Modus Tel Labs
 
 import { ArticleLayout } from "../components/layout/ArticleLayout";
 
+export const meta = () => {
+  const title = "Introducing Our Approach to AI & Automation — Modus Tel Labs";
+  const description = "How we think about building AI solutions and automation systems that drive real business outcomes";
+  const ogImage = "https://modustel.com/assets/og-modustel.svg";
+  const canonicalUrl = "https://modustel.com/insights/introducing-our-approach";
+  return [
+    { title },
+    { name: "description", content: description },
+    { tagName: "link", rel: "canonical", href: canonicalUrl },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: canonicalUrl },
+    { property: "og:image", content: ogImage },
+    { property: "og:image:alt", content: "Modus Tel Labs — AI & Automation insights" },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:type", content: "article" },
+    { property: "article:published_time", content: "2025-01-15" },
+    { property: "article:author", content: "Modus Tel Labs" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImage },
+    { name: "twitter:image:alt", content: "Modus Tel Labs — AI & Automation insights" },
+  ];
+};
+
+export const handle = {
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: "Introducing Our Approach to AI & Automation",
+    description: "How we think about building AI solutions and automation systems that drive real business outcomes",
+    author: { "@type": "Organization", name: "Modus Tel Labs" },
+    publisher: { "@type": "Organization", name: "Modus Tel Labs", logo: { "@type": "ImageObject", url: "https://modustel.com/assets/logos/ModusTelLogo.svg" } },
+    datePublished: "2025-01-15",
+    mainEntityOfPage: { "@type": "WebPage", "@id": "https://modustel.com/insights/introducing-our-approach" },
+  },
+};
+
 export default function Layout({ children }) {
   return (
     <ArticleLayout

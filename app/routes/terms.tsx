@@ -5,14 +5,17 @@ export function meta({}: Route.MetaArgs) {
   const title = "Terms of Service — Modus Tel Labs";
   const description =
     "Terms and conditions for using Modus Tel Labs website and services.";
+  const canonicalUrl = "https://modustel.com/terms";
   return [
     { title },
     {
       name: "description",
       content: description,
     },
+    { tagName: "link", rel: "canonical", href: canonicalUrl },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
+    { property: "og:url", content: canonicalUrl },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary" },
     { name: "twitter:title", content: title },

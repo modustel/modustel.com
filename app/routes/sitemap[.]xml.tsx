@@ -11,11 +11,8 @@ const staticPages = [
   { path: "/terms", priority: 0.3, changefreq: "yearly" },
 ];
 
-const workPages = [
-  "/work/fintech-platform",
-  "/work/healthcare-portal",
-  "/work/logistics-system",
-];
+// Work case study pages - add entries here when individual case study routes are created
+const workPages: string[] = [];
 
 const insightPages = [
   "/insights/introducing-our-approach",

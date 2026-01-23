@@ -10,6 +10,7 @@
       }
     },
     "routeIdToServerBundleId": {
+      "routes/sitemap[.]xml": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/home": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/services": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/work._index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
@@ -33,6 +34,15 @@
         "file": "app/root.tsx",
         "path": "",
         "config": {}
+      },
+      "routes/sitemap[.]xml": {
+        "id": "routes/sitemap[.]xml",
+        "parentId": "root",
+        "file": "app/routes/sitemap[.]xml.tsx",
+        "path": "sitemap.xml",
+        "config": {
+          "runtime": "nodejs"
+        }
       },
       "routes/home": {
         "id": "routes/home",
@@ -204,6 +214,12 @@
         "file": "root.tsx",
         "path": ""
       },
+      "routes/sitemap[.]xml": {
+        "id": "routes/sitemap[.]xml",
+        "parentId": "root",
+        "file": "routes/sitemap[.]xml.tsx",
+        "path": "sitemap.xml"
+      },
       "routes/home": {
         "id": "routes/home",
         "parentId": "root",
@@ -320,6 +336,10 @@
         "path": "",
         "file": "root.tsx",
         "children": [
+          {
+            "file": "routes/sitemap[.]xml.tsx",
+            "path": "sitemap.xml"
+          },
           {
             "file": "routes/home.tsx",
             "index": true

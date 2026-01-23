@@ -15,14 +15,17 @@ export function meta({}: Route.MetaArgs) {
   const description =
     "Transform your operations with custom AI, automation, and software solutions. Modernize your business processes with intelligent technology.";
   const ogImage = "https://modustel.com/assets/og-modustel.svg";
+  const canonicalUrl = "https://modustel.com/";
   return [
     { title },
     {
       name: "description",
       content: description,
     },
+    { tagName: "link", rel: "canonical", href: canonicalUrl },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
+    { property: "og:url", content: canonicalUrl },
     { property: "og:image", content: ogImage },
     {
       property: "og:image:alt",
@@ -35,6 +38,10 @@ export function meta({}: Route.MetaArgs) {
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
     { name: "twitter:image", content: ogImage },
+    {
+      name: "twitter:image:alt",
+      content: "Modus Tel Labs — AI-powered business transformation",
+    },
   ];
 }
 

@@ -9,14 +9,17 @@ export function meta({}: Route.MetaArgs) {
   const description =
     "Case studies and results from AI, automation, and custom software projects that transformed business operations.";
   const ogImage = "https://modustel.com/assets/og-modustel.svg";
+  const canonicalUrl = "https://modustel.com/work";
   return [
     { title },
     {
       name: "description",
       content: description,
     },
+    { tagName: "link", rel: "canonical", href: canonicalUrl },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
+    { property: "og:url", content: canonicalUrl },
     { property: "og:image", content: ogImage },
     {
       property: "og:image:alt",
@@ -31,7 +34,7 @@ export function meta({}: Route.MetaArgs) {
     { name: "twitter:image", content: ogImage },
     {
       name: "twitter:image:alt",
-      content: "Modus Tel Labs — Research and products at the frontier of safety",
+      content: "Modus Tel Labs — AI transformation projects",
     },
   ];
 }

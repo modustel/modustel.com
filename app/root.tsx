@@ -28,6 +28,23 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Modus Tel Labs",
+  url: "https://modustel.com",
+  logo: "https://modustel.com/assets/logos/ModusTelLogo.svg",
+  description:
+    "Custom AI, automation, and software solutions for business transformation",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    url: "https://modustel.com/contact",
+    email: "contact@modustel.com",
+  },
+  areaServed: "Worldwide",
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -36,6 +53,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
       </head>
       <body>
         {children}

@@ -39,6 +39,9 @@ export function SiteHeader() {
               src="/assets/logos/ModusTelLogo.svg"
               alt="Modus Tel Labs"
               className="brand-logo"
+              width={32}
+              height={32}
+              loading="eager"
             />
             <span className="brand-text">Modus Tel Labs</span>
           </a>
